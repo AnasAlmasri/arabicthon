@@ -1,5 +1,2 @@
 *.pyc
-*.csv
-*.log
-*.txt
 .vscode
