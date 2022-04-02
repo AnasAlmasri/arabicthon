@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+
+{% load static %}
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <link href="{% static "/booklet/src/jquery.booklet.latest.css" %}" type="text/css" rel="stylesheet" media="screen, projection, tv" />
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+    <script> window.jQuery || document.write('<script src="booklet/jquery-2.1.0.min.js"><\/script>') </script>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+
+    <script src="{% static "/booklet/src/jquery.easing.1.3.js" %}"></script>
+    <script src="{% static "/booklet/src/jquery.booklet.latest.min.js" %}"></script>
+
+    <link href="{% static "/circular-menu/css/circle-menu.css" %}" rel="stylesheet">
+    <script src="{% static "/circular-menu/js/src/circleMenu.js" %}"></script>
+
+    <title>Reader</title>
+</head>
+
+<style>
+td {
+    text-align: right;
+}
+
+body {
+    background-color: #f7ddc0;
+}
+</style>
+<body>
+    <nav class="c-circle-menu js-menu">
+        <button class="c-circle-menu__toggle js-menu-toggle">
+          <span>Toggle</span>
+        </button>
+        <ul class="c-circle-menu__items">
+          <li class="c-circle-menu__item">
+            <a href="#" class="c-circle-menu__link">
+              <img src="{% static "/circular-menu/img/house.svg" %}" alt="">
+            </a>
+          </li>
+          <li class="c-circle-menu__item">
+            <a href="#" class="c-circle-menu__link">
+              <img src="{% static "/circular-menu/img/photo.svg" %}" alt="">
+            </a>
+          </li>
+          <li class="c-circle-menu__item">
+            <a href="#" class="c-circle-menu__link">
+              <img src="{% static "/circular-menu/img/pin.svg" %}" alt="">
+            </a>
+          </li>
+          <li class="c-circle-menu__item">
+            <a href="#" class="c-circle-menu__link">
+              <img src="{% static "/circular-menu/img/search.svg" %}" alt="">
+            </a>
+          </li>
+          <li class="c-circle-menu__item">
+            <a href="#" class="c-circle-menu__link">
+              <img src="{% static "/circular-menu/img/tools.svg" %}" alt="">
+            </a>
+          </li>
+        </ul>
+        <div class="c-circle-menu__mask js-menu-mask"></div>
+      </nav>
+
+    <br><br>
+    <div id="mybook">
+        <div>
+            <br>
+            <table class="table table-hover">
+                <tbody>
+                    <tr>
+                        <td>وَأَن تَجمَعا شَملي وَتَنتَظِرا غَدا</td>
+                        <td>خَليلَيَّ لا تَستَعجِلا أَن تَزَوَّدا</td>
+                    </tr>
+                    <tr>
+                        <td>وَلا سُرعَتي يَوماً بِسابِقَةِ الرَدى</td>
+                        <td>فَما لَبَثٌ يَوماً بِسابِقٍ مَغنَمٍ</td>
+                    </tr>
+                    <tr>
+                        <td>وَتَستَوجِبا مَنّاً عَلَيَّ وَتُحمَدا</td>
+                        <td>وَإِن تُنظِراني اليَومَ أَقضِ لُبانَةً</td>
+                    </tr>
+                    <tr>
+                        <td>إِذا ما المُنادي في المَقامَةِ نَدَّدا</td>
+                        <td>لَعَمري لَنِعمَ المَرءُ تَدعو بِحَبلِهِ</td>
+                    </tr>
+                    <tr>
+                        <td>وَلا مُؤيِسٌ مِنها إِذا هُوَ أَوقَدا</td>
+                        <td>عَظيمُ رَمادِ القِدرِ لا مُتَعَبِّسٌ</td>
+                    </tr>
+                    <tr>
+                        <td>مِنَ الريحِ لَم تَترُك لِذي المالِ مِرفَدا</td>
+                        <td>وَإِن صَرَّحَت كَحلٌ وَهَبَّت عَرِيَّةٌ</td>
+                    </tr>
+                    <tr>
+                        <td>إِذا ضَنَّ ذو القُربى عَلَيهِم وَأَخمَدا</td>
+                        <td>صَبَرتُ عَلى وَطءِ المَوالي وَحَطمِهِم</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <br>
+            <table class="table table-hover">
+                <tbody>
+                    <tr>
+                        <td>تُؤامِرُني سِرّاً لِأَصرِمَ مَرثَدا</td>
+                        <td>لَعَمرُكَ ما نَفسٌ بِجِدٍ رَشيدَةٍ</td>
+                    </tr>
+                    <tr>
+                        <td>وَأَفرَعَ في لَومي مِراراً وَأَصعَدا</td>
+                        <td>وَإِن ظَهَرَت مِنهُ قَوارِصُ جَمَّةٌ</td>
+                    </tr>
+                    <tr>
+                        <td>سِوى قَولِ باغٍ كادَني فَتَجَهَّدا</td>
+                        <td>عَلى غَيرِ ذَنبٍ أَن أَكونَ جَنَيتُهُ</td>
+                    </tr>
+                    <tr>
+                        <td>كَريمُ المُحَيّا ماجِدٌ غَيرُ أَحرَدا</td>
+                        <td>وَلم يَحمِ فَرجَ الحَيِّ إِلّا مُحافِظٌ</td>
+                    </tr>
+                    <tr>
+                        <td>وَحُبَّ بِها لَولا النَوى وَطُموحُها</td>
+                        <td>أَرى جارَتي خَفَّت وَخَفَّ نَصيحُها</td>
+                    </tr>
+                    <tr>
+                        <td>وَأَشأَمُ طَيرِ الزاجِرينَ سَنيحُها</td>
+                        <td>فَبيني على نَجمٍ شَخيسٍ نُحوسُهُ</td>
+                    </tr>
+                    <tr>
+                        <td>إِذا شيمَتي لَم يُؤتَ مِنها سَجيحُها</td>
+                        <td>فَإِن تَشغَبي فَالشَغَبُ مِنّي سَجِيَّةٌ</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <br>
+            <table class="table table-hover">
+                <tbody>
+                    <tr>
+                        <td>وَعَفٌّ إِذا أَردى النُفوسَ شَحيحُها</td>
+                        <td>أُقارِضُ أَقواماً فَأوفي قُروضَهُم</td>
+                    </tr>
+                    <tr>
+                        <td>دِياري بِأَرضٍ غَيرِ دانٍ نُبوحُها</td>
+                        <td>عَلى أَنَّ قَومي أَشَقَذوني فَأَصبَحَت</td>
+                    </tr>
+                    <tr>
+                        <td>وَأَضمَرَ أَضغاناً عَلَيَّ كُشوحُها</td>
+                        <td>تَنَفَّذَ مِنهُم نافِذاتٌ فَسُؤنَني</td>
+                    </tr>
+                    <tr>
+                        <td>وَقَد يَنتَئي عَن دارِ سَوءٍ نَزيحُها</td>
+                        <td>فَقُلتُ فِراقُ الدارِ أَجمَلُ بَينَنا</td>
+                    </tr>
+                    <tr>
+                        <td>إِذا عَمَّتِ الدَعوى وَثابَ صَريحُها</td>
+                        <td>عَلى أَنَّني قَد أَدَّعي بِأَبيهِمِ</td>
+                    </tr>
+                    <tr>
+                        <td>إِذا نَسَكوا أَفراعُها وَذَبيحُها</td>
+                        <td>وَأَنّي أَرى ديني يُوافِقُ دينَهُم</td>
+                    </tr>
+                    <tr>
+                        <td>لَها بُقَعَةٌ لا يُستَطاعُ بُروحُها</td>
+                        <td>وَمَنزِلَةٍ بِالحَجِّ أُخرى عَرَفتُها</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <br>
+            <table class="table table-hover">
+                <tbody>
+                    <tr>
+                        <td>سُلَيمى إِذا هَبَّت شَمالٌ وَريحُها</td>
+                        <td>بِوُدِّكِ ما قَومي عَلى أَن تَرَكتِهِم</td>
+                    </tr>
+                    <tr>
+                        <td>وَلَم يَكُ بَرقٌ في السَماءِ يُليحُها</td>
+                        <td>إِذا النَجمُ أَمسى مَغرِبَ الشَمسِ رائِباً</td>
+                    </tr>
+                    <tr>
+                        <td>وَلا غَمرَةٍ إِلّا وَشيكاً مُصوحُها</td>
+                        <td>وَغابَ شُعاعُ الشَمسِ في غَيرِ جُلبَةٍ</td>
+                    </tr>
+                    <tr>
+                        <td>نَقيلَةُ نَعلٍ بانَ مِنها سَريحُها</td>
+                        <td>وَهاجَ عَماءٌ مُقشَعِرٌ كَأَنَّهُ</td>
+                    </tr>
+                    <tr>
+                        <td>قُدورٌ كَثيرٌ في القِصاعِ قَديحُها</td>
+                        <td>إِذا عُدِمَ المَحلوبُ عادَت عَلَيهِمُ</td>
+                    </tr>
+                    <tr>
+                        <td>كَما رَدَّ دَهداهَ القِلاصِ نَضيحُها</td>
+                        <td>يَثوبُ إِلَيها كُلُّ ضَيفٍ وَجانِبٍ</td>
+                    </tr>
+                    <tr>
+                        <td>يَعودُ بِأَرزاقِ العِيالِ مَنيحُها</td>
+                        <td>بِأَيديهِمُ مَقرومَةٌ وَمَغالِقٌ</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+
+<script>
+    $(document).ready(function() {
+
+        $(function() {
+            $('#mybook').booklet({
+                width: 900,
+                height: 500,
+                direction:  'RTL',
+                manual: false,
+                overlays: true,
+                hovers: true,
+                shadows: true
+            });
+        });
+
+        var el = '.js-menu';
+        var myMenu = cssCircleMenu(el);
+    });
+</script>
