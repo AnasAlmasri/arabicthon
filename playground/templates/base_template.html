@@ -32,6 +32,9 @@
   <link href="{% static "/assets/css/variables.css" %}" rel="stylesheet">
   <link href="{% static "/assets/css/main.css" %}" rel="stylesheet">
 
+  {% block head %}
+  {% endblock %}
+
 </head>
 
 <body>
@@ -40,7 +43,7 @@
   <header id="header" class="header d-flex align-items-center fixed-top">
     <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
 
-      <a href="index.html" class="logo d-flex align-items-center">
+      <a href="../" class="logo d-flex align-items-center">
         <!-- Uncomment the line below if you also wish to use an image logo -->
         <!-- <img src="{% static "/assets/img/logo.png" alt=""> -->
         <h1></h1>
@@ -48,12 +51,12 @@
 
       <nav id="navbar" class="navbar" style="position: absolute; border-bottom: 2px solid brown;">
         <ul>
-          <li><a href="index.html">تواصل</a></li>
+          <li><a href="../">تواصل</a></li>
           <li><a href="single-post.html">تدوينات</a></li>
-          <li><a href="about.html">أبيات</a></li>
+          <li><a href="../search/">أبيات</a></li>
           <li><a href="contact.html">موسوعات</a></li>
-          <li><a href="search/">مكتبة</a></li>
-          <li><a href="./">رئيسية</a></li>
+          <li><a href="contact.html">مكتبة</a></li>
+          <li><a href="../">رئيسية</a></li>
         </ul>
       </nav><!-- .navbar -->
 
@@ -63,9 +66,7 @@
 
         <!-- ======= Search Form ======= -->
         <div class="search-form-wrap js-search-form-wrap">
-
           {% include 'search.html' %}
-
         </div><!-- End Search Form -->
 
       </div>
@@ -74,9 +75,10 @@
 
   </header><!-- End Header -->
 
-  <main id="main">
+  <main class="main">
 
-    {% include "reader.html" %}
+    {% block body %}
+    {% endblock %}
 
   </main><!-- End #main -->
 

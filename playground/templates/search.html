@@ -1,0 +1,6 @@
+<form action="../search/" method=POST>
+  {% csrf_token %}
+  <input name="search_val" type="text" placeholder="Search" class="form-control" style="width:10rem;"/>
+  <input type="submit" hidden />
+  <button class="btn js-search-close"><span class="bi-x"></span></button>
+</form>
