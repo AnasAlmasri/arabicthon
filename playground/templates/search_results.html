@@ -1,0 +1,58 @@
+{% extends "base_template.html" %}
+
+{% load static %}
+
+{% block head %}
+
+<title>Search Results</title>
+<link rel="stylesheet" href="{% static 'assets/css/search.css' %}">
+
+{% endblock %}
+
+{% block body %}
+
+<div class="container mycontainer">
+    <table class="table-fill mytable">
+        <thead>
+            <tr>
+                <th class="text-left">#</th>
+                <th class="text-left">ID</th>
+                <th class="text-right">Age</th>
+                <th class="text-right">Poet</th>
+                <th class="text-right">Diwan</th>
+                <th class="text-right">Qafiya</th>
+                <th class="text-right">Bahr</th>
+                <th class="text-right">Bayt</th>
+            </tr>
+        </thead>
+        <tbody class="table-hover">
+            {% if results %}
+                {% for arow in results %}
+                <tr>
+                    <td class="text-left">{{ forloop.counter }}</td>
+                    <td class="text-left">{{ arow.0 }}</td>
+                    <td class="text-right">{{ arow.1 }}</td>
+                    <td class="text-right">{{ arow.2 }}</td>
+                    <td class="text-right">{{ arow.3 }}</td>
+                    <td class="text-right">{{ arow.4 }}</td>
+                    <td class="text-right">{{ arow.5 }}</td>
+                    <td class="text-right">{{ arow.8 }}</td>
+                </tr>
+                {% endfor %}
+            {% else %}
+            <tr>
+                <td>Row Num</td>
+                <td class="text-left">1</td>
+                <td class="text-left">12312</td>
+                <td class="text-right">Nothing</td>
+                <td class="text-right">to</td>
+                <td class="text-right">see</td>
+                <td class="text-right">here</td>
+                <td class="text-right">!</td>
+            </tr>
+            {% endif %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}
