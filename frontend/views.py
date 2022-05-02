@@ -12,6 +12,16 @@ def reader(request):
     return render(request, 'reader.html', context=reader_dict)
 
 
+def background(request):
+    background_dict = {}
+    return render(request, 'background.html', context=background_dict)
+
+
+def library(request):
+    library_dict = {}
+    return render(request, 'library.html', context=library_dict)
+
+
 def search(request):
     search_dict = {}
 
