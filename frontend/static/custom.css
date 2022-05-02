@@ -1,6 +1,25 @@
+@font-face {
+    font-family: AlmaraiRegular;
+    src: url(../static/fonts/Almarai-Regular.ttf);
+  }
+
 .navbar {
-    position: absolute; border-bottom: 2px solid brown;
+    position: absolute; 
+    text-align: center;
+    border-bottom: 2px solid brown;
+    font-family: AlmaraiRegular;
 }
+
+.navbar, 
+    li > a {
+        text-align: center;
+        font-family: AlmaraiRegular !important;
+        font-size: 18px !important;
+    }
+    .active {
+        border-bottom: 4px solid brown;
+        font-weight: 900 !important;
+    }
 
 .search {
     margin-top: 40px;
