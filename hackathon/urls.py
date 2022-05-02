@@ -22,4 +22,6 @@ urlpatterns = [
     path('', views.index, name='index'),
     path('reader/', views.reader, name='reader'),
     path('search/', views.search, name='search'),
+    path('background/', views.background, name='background'),
+    path('library/', views.library, name='library'),
 ]
