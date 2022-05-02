@@ -14,7 +14,7 @@
             <li><a href="single-post.html">تدوينات</a></li>
             <li><a href="about.html">أبيات</a></li>
             <li><a href="contact.html">موسوعات</a></li>
-            <li><a href="library.html">مكتبة</a></li>
+            <li><a href="library.html" {% if request.path == '/library.html' %} class="active"{% endif %}>مكتبة</a></li>
             <li><a href="./">رئيسية</a></li>
         </ul>
         </nav><!-- .navbar -->
