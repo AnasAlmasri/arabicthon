@@ -36,80 +36,13 @@
 
 <body>
 
-  <!-- ======= Header ======= -->
-  <header id="header" class="header d-flex align-items-center fixed-top">
-    <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
-
-      <a href="index.html" class="logo d-flex align-items-center">
-        <!-- Uncomment the line below if you also wish to use an image logo -->
-        <!-- <img src="{% static "/assets/img/logo.png" alt=""> -->
-        <h1></h1>
-      </a>
-
-      <nav id="navbar" class="navbar" style="position: absolute; border-bottom: 2px solid brown;">
-        <ul>
-          <li><a href="index.html">تواصل</a></li>
-          <li><a href="single-post.html">تدوينات</a></li>
-          <li><a href="about.html">أبيات</a></li>
-          <li><a href="contact.html">موسوعات</a></li>
-          <li><a href="search/">مكتبة</a></li>
-          <li><a href="./">رئيسية</a></li>
-        </ul>
-      </nav><!-- .navbar -->
-
-      <div class="position-relative" style="margin-top: 20px;">
-        <a href="#" class="mx-2 js-search-open" style="color: brown;"><span class="bi-search"></span></a>
-        <i class="bi bi-list mobile-nav-toggle"></i>
-
-        <!-- ======= Search Form ======= -->
-        <div class="search-form-wrap js-search-form-wrap">
-
-          {% include 'search.html' %}
-
-        </div><!-- End Search Form -->
-
-      </div>
-
-    </div>
-
-  </header><!-- End Header -->
+  {% include 'navbar.html' %}
 
   <main id="main">
 
     {% include "reader.html" %}
 
   </main><!-- End #main -->
-
-  <!-- ======= Footer ======= -->
-  <footer id="footer" class="footer">
-
-    <div class="footer-legal">
-      <div class="container">
-
-        <div class="row justify-content-between">
-          <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-            <div class="copyright">
-              ©<strong><span></span></strong> All Rights Reserved
-            </div>
-
-            <div class="credits">
-            </div>
-
-          </div>
-
-          <div class="col-md-6">
-            <div class="social-links mb-3 mb-lg-0 text-center text-md-end">
-
-            </div>
-
-          </div>
-
-        </div>
-
-      </div>
-    </div>
-
-  </footer>
 
   <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
