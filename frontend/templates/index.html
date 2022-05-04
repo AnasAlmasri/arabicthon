@@ -13,40 +13,22 @@
   
   <div class="container">
 
-    <div class="row">
-        <div class="col-sm-2 py-2">
-            <div class="card" style="width: 5rem;">
-                <img class="card-img-top" src="{% static "icons/mini-book-cover-gray.png" %}" alt="Card image cap">
-                <div class="card-body">
-                  <p class="card-text">example</p>
-                </div>
+    {% if poet_list %}
+        {% for row in poet_list %}
+        <div class="row">
+                {% for poet in row %}
+                    <div class="col-sm-2 py-2">
+                        <div class="card" style="width: 5rem;">
+                            <img class="card-img-top" src="{% static "icons/mini-book-cover-gray.png" %}" alt="Card image cap">
+                            <div class="card-body">
+                            <p class="card-text" style="direction: rtl">{{ poet.poet_name }}</p>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
             </div>
-        </div>
-        <div class="col-sm-2 py-2">
-            <div class="card" style="width: 5rem;">
-                <img class="card-img-top" src="{% static "icons/mini-book-cover-gray.png" %}" alt="Card image cap">
-                <div class="card-body">
-                  <p class="card-text">example</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-2 py-2">
-            <div class="card" style="width: 5rem;">
-                <img class="card-img-top" src="{% static "icons/mini-book-cover-gray.png" %}" alt="Card image cap">
-                <div class="card-body">
-                  <p class="card-text">example</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-2 py-2">
-            <div class="card" style="width: 5rem;">
-                <img class="card-img-top" src="{% static "icons/mini-book-cover-gray.png" %}" alt="Card image cap">
-                <div class="card-body">
-                  <p class="card-text">example</p>
-                </div>
-            </div>
-        </div>
-    </div>
+        {% endfor %}
+    {% endif %}
 
   </div>
 {% endblock %}
@@ -76,7 +58,7 @@
 
     <div id="poet_name_div" class="form-group">
       <label for="poet_name">اسم الشاعر</label>
-      <input type="text" class="form-control" id="poet_name" name="poet_name">
+      <input type="text" class="form-control" id="poet_name" name="poet_name" {% if search.params.poet_name %}value="{{ search.params.poet_name }}"{% endif %}>
     </div>
 
     <div id="keyword_div" class="form-group">

@@ -21,6 +21,32 @@ def index(request):
                 # construct where clause
                 where_clause += f"poet LIKE '%{poet_name}%'"
             
+                conn = sqlite3.connect('db.sqlite3')
+                c = conn.cursor()
+                c.execute(f"SELECT DISTINCT poet FROM poem_dataset WHERE {where_clause}")
+                queryset = c.fetchall()
+                c.close()
+                
+                i = 0
+                poet_list = []
+                row = []
+                for q in queryset:
+                    row.append({
+                        'poet_name': q[0]
+                    })
+                    if len(row) == 4:
+                        poet_list.append(row)
+                        row = []
+                    i += 1
+                    if i == 8:
+                        break
+                    
+                index_dict['poet_list'] = poet_list
+                
+                index_dict['search_params'] = {
+                    'poet_name': poet_name
+                }
+                
             elif request.POST.get('radio_bayt'):
                 
                 # get search string
@@ -40,17 +66,17 @@ def index(request):
 
                 if age is not None:
                     where_clause += f" AND age = '{age}'"
+                
+                conn = sqlite3.connect('db.sqlite3')
+                c = conn.cursor()
+                c.execute(f"SELECT * FROM poem_dataset WHERE {where_clause}")
+                queryset = c.fetchall()
+                c.close()
                     
+                index_dict['search_results'] = queryset
+                
             else:
                 raise Exception('Unknown search mode. Contact IT')
-            
-            conn = sqlite3.connect('db.sqlite3')
-            c = conn.cursor()
-            c.execute(f"SELECT * FROM poem_dataset WHERE {where_clause}")
-            queryset = c.fetchall()
-            c.close()
-                
-            index_dict['search_results'] = queryset
             
     except Exception as e:
         msg = str(e)
