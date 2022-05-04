@@ -3,6 +3,12 @@
     src: url(../static/fonts/Almarai-Regular.ttf);
   }
 
+html {
+    background: url(./img/main-bg.svg);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
 .navbar {
     position: absolute; 
     text-align: center;
@@ -26,7 +32,7 @@
 }
 
 body {
-    background-color: #f7ddc0;
+    background: url(./img/main-bg.svg);
 }
 
 .bg-book-outermost {
@@ -36,6 +42,7 @@ body {
     margin-bottom: 20px;
     width: 90%;
     height: 650px;
+    background: url(./img/main-bg.svg);
 }
 
 .bg-book-outer {
@@ -80,7 +87,7 @@ body {
 
 .bg-book-inner-bottom {
     position: absolute;
-    background: #f7ddc0;
+    background: url(./img/main-bg.svg);
     height: 10%;
     width: 100%;
     bottom: -1px;
