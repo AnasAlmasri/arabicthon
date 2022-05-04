@@ -57,6 +57,10 @@
 
     {% csrf_token %}
 
+    {% if msg|length > 0 %}
+        {{ msg }}
+    {% endif %}
+
     <h3>البحث</h3>
     <br>
 
@@ -72,12 +76,12 @@
 
     <div id="poet_name_div" class="form-group">
       <label for="poet_name">اسم الشاعر</label>
-      <input type="text" class="form-control" id="poet_name">
+      <input type="text" class="form-control" id="poet_name" name="poet_name">
     </div>
 
     <div id="keyword_div" class="form-group">
       <label for="keyword">كلمة البحث</label>
-      <input type="text" class="form-control" id="keyword">
+      <input type="text" class="form-control" id="keyword" name="keyword">
     </div>
     
     <div id="bahr_div" class="form-group">
