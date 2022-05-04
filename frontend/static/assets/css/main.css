@@ -109,9 +109,9 @@ section {
   outline: none;
 }
 .btn.btn-primary {
-  background-color: var(--color-black);
+  background-color: #36374D;
   color: var(--color-white);
-  border-color: var(--color-black);
+  border-color: #36374D;
 }
 
 /*--------------------------------------------------------------
