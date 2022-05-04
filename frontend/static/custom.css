@@ -125,3 +125,7 @@ form,
 }
 
 
+.bg-book-outermost .container {
+    padding-left: 50px;
+    padding-right: 50px;
+}
