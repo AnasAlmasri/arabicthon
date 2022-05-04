@@ -35,6 +35,25 @@ body {
     background: url(./img/main-bg.svg);
 }
 
+form,
+    label {
+        direction: rtl;
+        font-family: AlmaraiRegular !important;   
+    }
+    h3 {
+        font-family: AlmaraiRegular !important;
+    }
+    select {
+        height: 100%;
+        width: 105%;
+    }
+
+#search_form {
+    padding: 50px;
+    padding-top: 0px;
+    padding-left: 80px;
+}
+
 .bg-book-outermost {
     display: flex;
     margin-left: 5%;
