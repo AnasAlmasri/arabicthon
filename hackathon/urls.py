@@ -21,7 +21,11 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index, name='index'),
     path('reader/', views.reader, name='reader'),
-    path('search/', views.search, name='search'),
     path('background/', views.background, name='background'),
-    path('library.html', views.library, name='library'),
+    path('library/', views.library, name='library'),
+    path('login/', views.user_login, name='login'),
+    path('accounts/login/', views.user_login, name='login'),
+    path('profile/', views.profile_page, name='profile'),
+    path('logout/', views.user_logout, name='logout'),
+    path('signup/', views.user_signup, name='signup'),
 ]
