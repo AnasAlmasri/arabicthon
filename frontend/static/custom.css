@@ -47,6 +47,11 @@ h3 {
     font-family: AlmaraiRegular !important;
 }
 
+#poems_of_poet td {
+    direction: rtl;
+    font-family: AlmaraiRegular !important;
+}
+
 #poet_paragraph {
     direction: rtl;
     font-family: AlmaraiRegular !important;
@@ -69,6 +74,11 @@ select {
     padding-left: 80px;
 }
 
+#get_poems_div {
+    padding: 50px;
+    padding-top: 0px;
+    padding-left: 80px;
+}
 
 .bg-book-outermost {
     display: flex;

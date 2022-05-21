@@ -30,14 +30,46 @@ function getPoetDetails(poet_name) {
         data: { "poet_name": poet_name },
         success: function (response) {
             // hide search form
-            $("#search_form").empty();
+            $("#search_form").hide();
+            $("#get_poems_div").hide();
 
             // set text
             $("#poet_paragraph").text(response["text"]);
-            console.log(response["text"]);
+            $("#hidden_poet_name").val(poet_name);
 
             // show poet details
             $("#poet_details_div").show();
+        }
+    });
+}
+
+function getPoems() {
+    poet_name = $("#hidden_poet_name").val();
+    $.ajax({
+        type: "POST",
+        url: "/get_poems/",
+        data: { "poet_name": poet_name },
+        success: function (response) {
+            // hide search form
+            $("#search_form").hide();
+
+            // hide poet details
+            $("#poet_details_div").hide();
+
+            // set header text
+            $("#reader_poet_name").text("مما كتبه " + poet_name);
+
+            // build table content
+            var table_content = "";
+            for (var i = 0; i < response["content"].length; i++) {
+                var obj = response["content"][i];
+                table_content += "<tr>" + "<td>" + obj.shatr_left + "</td>" + "<td>" + obj.shatr_right + "</td>" + "</tr>"
+            }
+
+            $("#poems_of_poet > tbody").html(table_content);
+
+            // show poems
+            $("#get_poems_div").show();
         }
     });
 }
