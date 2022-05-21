@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block additional_head %}
+
+<script src="{% static '/assets/js/de_baser.js' %}"></script>
+
+<style>
+
+    #right_panel {
+        content: "";
+        position: fixed;
+        z-index: 4;
+        min-height: 100vh;
+        padding: 3.5%;
+        background-color: #f0f0f0;
+        width: 25vw;
+        right: 0%;
+        top: 0%;
+    }
+
+    #right_panel h2 {
+        font-family: 'AlmaraiRegular';
+        font-weight: 900;
+        text-align: center;
+        font-size: 2.5rem;
+    }
+
+    #h2 {
+        margin-bottom: 12.5vh
+    }
+
+    h4 {
+        font-family: 'AlmaraiRegular';
+        font-weight: 200;
+        text-align: center;
+        font-size: 1.5rem;
+    }
+
+    #form label {
+        margin-top: 12.5%;
+    }
+
+    #form input {
+        background-color: transparent;
+        border: none;
+        border-bottom: #000000 solid 2px;
+        border-radius: 0px;
+        transition: 0.3s ease-in;
+    }
+
+    #form input:focus {
+        width: 90%;
+        margin: auto 5%;
+        transition: 0.3s ease-in;
+        border-bottom: #36374D solid 2px;
+    }
+
+
+    .form-group, .form-group-btn, hr {
+        padding: 2% auto;
+        margin: 2% 5%;
+    }
+
+    #form_btn {
+        width: 100%;
+        text-align: center;
+    }
+
+    #form_btn button {
+        margin-top: 7vh;
+        text-align: center;
+        top: 50%;
+        padding: 3% 15%;
+        border-radius: 50px;
+        font-weight: 700;
+        font-size: 1.125rem;
+        border: solid 4px #36374D;
+        background-color: #36374D;
+    }
+
+    #form_btn button:hover {
+        background-color: #f0f0f0;
+        color: #36374D;
+        transition: 0.3s ease-in-out;
+    }
+
+</style>
+
+{% endblock %}
+
+
+<!-- {% block left_content %}
+
+<h4>Login</h4>
+
+<form id="login_form" method="POST" action=".">
+
+    {% csrf_token %}
+
+    <div id="username_div" class="form-group">
+        <label for="username">Username</label>
+        <input type="text" class="form-control" id="username" name="username">
+    </div>
+
+    <div id="password_div" class="form-group">
+        <label for="password">Password</label>
+        <input type="text" class="form-control" id="password" name="password">
+    </div>
+
+    <button type="submit" class="btn btn-primary form-group-btn">Login</button>
+
+</form>
+
+{% endblock %} -->
+
+{% block alt_main %}
+
+<div id="right_panel">
+
+    <div id="signup_form_div" class="">
+
+        <div id="h2">
+            <h2>مرحبا بكم في </h2>
+            <h2>موقعنا</h2>
+        </div>
+
+        <!-- <form id="signup_form" method="POST" action=".">
+
+            {% csrf_token %}
+
+            {{ signup_form }}
+
+            <button type="submit" class="btn btn-primary form-group-btn">Signup</button>
+
+        </form> -->
+
+        <h4>تسجيل دخول المستخدم</h4>
+
+        <form id="form" method="POST" action=".">
+
+            {% csrf_token %}
+
+            <div id="username_div" class="form-group">
+                <label for="username">تسم المستخدم</label>
+                <input type="text" class="form-control" id="username" name="username">
+            </div>
+
+            <div id="password_div" class="form-group">
+                <label for="password">كلمه السر</label>
+                <input type="text" class="form-control" id="password" name="password">
+            </div>
+
+            <div id="form_btn">
+                <button type="submit" class="btn btn-primary form-group-btn">تسجيل دخول</button>
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+{% endblock %}
+
+
+{% block raw_js %}
+
+<script>
+    $('#signup_form span.helptext').wrap('<div class="helptext_parent">?</div>')
+</script>
+
+{% endblock %}

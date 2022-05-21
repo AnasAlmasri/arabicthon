@@ -6,17 +6,17 @@
 html {
     background: url(./img/main-bg.svg);
     background-repeat: no-repeat;
-    background-size: 100% 100%;
+    background-size: cover;
 }
 
 .navbar {
-    position: absolute; 
+    position: absolute;
     text-align: center;
     border-bottom: 2px solid brown;
     font-family: AlmaraiRegular;
 }
 
-.navbar, 
+.navbar,
     li > a {
         text-align: center;
         font-family: AlmaraiRegular !important;
@@ -38,7 +38,7 @@ body {
 form,
     label {
         direction: rtl;
-        font-family: AlmaraiRegular !important;   
+        font-family: AlmaraiRegular !important;
     }
     h3 {
         font-family: AlmaraiRegular !important;
@@ -58,7 +58,6 @@ form,
     display: flex;
     margin-left: 5%;
     margin-top: 8%;
-    margin-bottom: 20px;
     width: 90%;
     height: 650px;
     background: url(./img/main-bg.svg);
@@ -69,13 +68,13 @@ form,
 }
 
 #left_page_div {
-    float:left; 
+    float:left;
     width:49%;
     height:80%;
 }
 
 #page_separator {
-    float:left; 
+    float:left;
     background:#dee2e6;
     width: 0.1%;
     height: 70%;
@@ -90,7 +89,6 @@ form,
     float:left;
     width:49%;
     height:80%;
-    
 }
 
 .bg-book-inner-top {

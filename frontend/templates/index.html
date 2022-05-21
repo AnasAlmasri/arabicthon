@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-{% extends "base.html" %} 
+{% extends "base.html" %}
 
 {% load static %}
 
@@ -10,7 +10,7 @@
 {% endblock %}
 
 {% block left_content %}
-  
+
   <div class="container">
 
     {% if poet_list %}
@@ -65,7 +65,7 @@
       <label for="keyword">كلمة البحث</label>
       <input type="text" class="form-control" id="keyword" name="keyword">
     </div>
-    
+
     <div id="bahr_div" class="form-group">
       <label for="bahr_dd">البحر</label><br>
       <select id="bahr_dd" name="bahr_dd" class="js-example-basic-single">
@@ -83,9 +83,9 @@
         <option value="الأيوبي">الأيوبي</option>
       </select>
     </div>
-    
+
     <br>
-    
+
     <button type="submit" class="btn btn-primary">ابحث</button>
 
   </form>
@@ -109,7 +109,7 @@
     }
     $('#bahr_dd').select2(dd_options);
     $('#age_dd').select2(dd_options);
-    
+
   });
 
 </script>
