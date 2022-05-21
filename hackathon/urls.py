@@ -18,10 +18,11 @@ from django.urls import path
 from frontend import views
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', views.index, name='index'),
-    path('reader/', views.reader, name='reader'),
-    path('search/', views.search, name='search'),
-    path('background/', views.background, name='background'),
-    path('library.html', views.library, name='library'),
+    path("admin/", admin.site.urls),
+    path("", views.index, name="index"),
+    path("reader/", views.reader, name="reader"),
+    path("search/", views.search, name="search"),
+    path("background/", views.background, name="background"),
+    path("library.html", views.library, name="library"),
+    path("poet_details/", views.ajax_poet_details, name="poet_details"),
 ]
