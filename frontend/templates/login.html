@@ -80,6 +80,7 @@
         font-size: 1.125rem;
         border: solid 4px #36374D;
         background-color: #36374D;
+        outline: none;
     }
 
     #form_btn button:hover {
@@ -93,54 +94,20 @@
 {% endblock %}
 
 
-<!-- {% block left_content %}
-
-<h4>Login</h4>
-
-<form id="login_form" method="POST" action=".">
-
-    {% csrf_token %}
-
-    <div id="username_div" class="form-group">
-        <label for="username">Username</label>
-        <input type="text" class="form-control" id="username" name="username">
-    </div>
-
-    <div id="password_div" class="form-group">
-        <label for="password">Password</label>
-        <input type="text" class="form-control" id="password" name="password">
-    </div>
-
-    <button type="submit" class="btn btn-primary form-group-btn">Login</button>
-
-</form>
-
-{% endblock %} -->
-
 {% block alt_main %}
 
 <div id="right_panel">
 
-    <div id="signup_form_div" class="">
+    <div id="form_div" class="">
 
         <div id="h2">
             <h2>مرحبا بكم في </h2>
             <h2>موقعنا</h2>
         </div>
 
-        <!-- <form id="signup_form" method="POST" action=".">
-
-            {% csrf_token %}
-
-            {{ signup_form }}
-
-            <button type="submit" class="btn btn-primary form-group-btn">Signup</button>
-
-        </form> -->
-
         <h4>تسجيل دخول المستخدم</h4>
 
-        <form id="form" method="POST" action=".">
+        <form id="form" method="POST" action="{% url 'login' %}">
 
             {% csrf_token %}
 
@@ -151,11 +118,11 @@
 
             <div id="password_div" class="form-group">
                 <label for="password">كلمه السر</label>
-                <input type="text" class="form-control" id="password" name="password">
+                <input type="password" class="form-control" id="password" name="password">
             </div>
 
             <div id="form_btn">
-                <button type="submit" class="btn btn-primary form-group-btn">تسجيل دخول</button>
+                <button type="submit" value="login" class="btn btn-primary form-group-btn">تسجيل دخول</button>
             </div>
 
         </form>
@@ -170,7 +137,7 @@
 {% block raw_js %}
 
 <script>
-    $('#signup_form span.helptext').wrap('<div class="helptext_parent">?</div>')
+    $('#form span.helptext').wrap('<div class="helptext_parent">?</div>')
 </script>
 
 {% endblock %}
