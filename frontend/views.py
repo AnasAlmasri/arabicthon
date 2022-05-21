@@ -23,6 +23,44 @@ def ajax_poet_details(request):
             return JsonResponse({"error": "Something went wrong!"}, status=400)
 
 
+@csrf_exempt
+def ajax_get_poems(request):
+    # request should be ajax and method should be POST.
+    if request.method == "POST":
+        poet_name = request.POST.get("poet_name")
+
+        if poet_name:
+
+            response = []
+
+            # construct where clause
+            needle = poet_name.replace(" ", "%")
+
+            conn = sqlite3.connect("db.sqlite3")
+            c = conn.cursor()
+            c.execute(
+                f"SELECT shatr_left, shatr_right FROM poem_dataset WHERE poet LIKE '{needle}'"
+            )
+            queryset = c.fetchall()
+            c.close()
+
+            i = 0
+            poem_list = []
+            for q in queryset:
+                poem_list.append({"shatr_left": q[0], "shatr_right": q[1]})
+                i += 1
+                if i == 7:
+                    break
+
+            response = poem_list
+
+            return JsonResponse({"content": response}, status=200)
+
+        else:
+
+            return JsonResponse({"error": "Something went wrong!"}, status=400)
+
+
 def index(request):
     index_dict = {}
     msg = ""

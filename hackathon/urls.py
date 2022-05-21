@@ -25,4 +25,5 @@ urlpatterns = [
     path("background/", views.background, name="background"),
     path("library.html", views.library, name="library"),
     path("poet_details/", views.ajax_poet_details, name="poet_details"),
+    path("get_poems/", views.ajax_get_poems, name="get_poems"),
 ]

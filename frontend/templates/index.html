@@ -99,15 +99,36 @@
 
   </form>
 
-  <div id="poet_details_div" >
+  	<div id="poet_details_div" >
 
-    <h3>عن الشاعر</h3>
-    <br>
+		<h3>عن الشاعر</h3>
+		<br>
 
-	<p id="poet_paragraph">
+		<p id="poet_paragraph">
 
-	</p>
-</div>
+		</p>
+		<input type="hidden" id="hidden_poet_name"></input>
+
+		<button type="submit" onclick="getPoems()" class="btn btn-primary">منشورات الشاعر</button>
+
+	</div>
+
+	<div id="get_poems_div" >
+
+		<h3 id="reader_poet_name"></h3>
+
+		<br>
+
+		<table id="poems_of_poet" class="table table-hover">
+			<tbody>
+
+			</tbody>
+		</table>
+
+		<button type="submit" onclick="" class="btn btn-primary">العودة</button>
+
+	</div>
+
 
 {% endblock %}
 
@@ -121,6 +142,7 @@
     renderSearchForm('');
 
 	$("#poet_details_div").hide();
+	$("#get_poems_div").hide();
 
     var dd_options = {
       maximumSelectionLength: 5,
