@@ -22,3 +22,22 @@ function renderSearchForm(mode) {
             renderSearchForm('bayt');
     }
 }
+
+function getPoetDetails(poet_name) {
+    $.ajax({
+        type: "POST",
+        url: "/poet_details/",
+        data: { "poet_name": poet_name },
+        success: function (response) {
+            // hide search form
+            $("#search_form").empty();
+
+            // set text
+            $("#poet_paragraph").text(response["text"]);
+            console.log(response["text"]);
+
+            // show poet details
+            $("#poet_details_div").show();
+        }
+    });
+}

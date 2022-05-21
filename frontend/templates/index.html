@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-{% extends "base.html" %} 
+{% extends "base.html" %}
 
 {% load static %}
 
@@ -10,23 +10,32 @@
 {% endblock %}
 
 {% block left_content %}
-  
-  <div class="container">
+
+<div class="container">
 
     {% if poet_list %}
-        {% for row in poet_list %}
-        <div class="row">
-                {% for poet in row %}
-                    <div class="col-sm-2 py-2">
-                        <div class="card" style="width: 5rem;">
-                            <img class="card-img-top" src="{% static "icons/mini-book-cover-gray.png" %}" alt="Card image cap">
-                            <div class="card-body">
-                            <p class="card-text" style="direction: rtl">{{ poet.poet_name }}</p>
-                            </div>
-                        </div>
-                    </div>
-                {% endfor %}
-            </div>
+
+	<script>
+		$(document).ready(function() {
+			$("#search_form").empty();
+		})
+	</script>
+
+		{% for row in poet_list %}
+			<div class="row">
+				{% for poet in row %}
+					<div class="col-sm-2 py-2">
+						<a href="#" onclick="getPoetDetails('{{ poet.poet_name }}')">
+							<div class="card" style="width: 5rem;">
+								<img class="card-img-top" src="{% static "icons/mini-book-cover-gray.png" %}" alt="Card image cap">
+								<div class="card-body">
+									<p class="card-text" style="direction: rtl">{{ poet.poet_name }}</p>
+								</div>
+							</div>
+						</a>
+					</div>
+				{% endfor %}
+			</div>
         {% endfor %}
     {% endif %}
 
@@ -65,7 +74,7 @@
       <label for="keyword">كلمة البحث</label>
       <input type="text" class="form-control" id="keyword" name="keyword">
     </div>
-    
+
     <div id="bahr_div" class="form-group">
       <label for="bahr_dd">البحر</label><br>
       <select id="bahr_dd" name="bahr_dd" class="js-example-basic-single">
@@ -83,12 +92,22 @@
         <option value="الأيوبي">الأيوبي</option>
       </select>
     </div>
-    
+
     <br>
-    
+
     <button type="submit" class="btn btn-primary">ابحث</button>
 
   </form>
+
+  <div id="poet_details_div" >
+
+    <h3>عن الشاعر</h3>
+    <br>
+
+	<p id="poet_paragraph">
+
+	</p>
+</div>
 
 {% endblock %}
 
@@ -101,6 +120,8 @@
 
     renderSearchForm('');
 
+	$("#poet_details_div").hide();
+
     var dd_options = {
       maximumSelectionLength: 5,
       dropdownAutoWidth: true,
@@ -109,7 +130,7 @@
     }
     $('#bahr_dd').select2(dd_options);
     $('#age_dd').select2(dd_options);
-    
+
   });
 
 </script>
