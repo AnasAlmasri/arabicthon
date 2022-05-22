@@ -12,7 +12,7 @@ class PoetScraper:
         search_str = "+".join(keywords)
         search_url = PoetScraper.base_url + urllib.parse.quote_plus(search_str)
 
-        r = requests.get(search_url)
+        r = requests.get(search_url, timeout=0.5)
         r.text
 
         soup = BeautifulSoup(r.text, "html.parser")
