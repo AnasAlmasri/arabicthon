@@ -7,6 +7,8 @@
 {% block additional_head %}
   <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
   <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+	<link rel="stylesheet" href="{% static "/customize-ui/dist/open-accessibility.min.css" %}" />
+	<script src="{% static "/customize-ui/dist/open-accessibility.min.js" %}"></script>
 {% endblock %}
 
 {% block left_content %}
@@ -119,7 +121,7 @@
 
 		<br>
 
-		<table id="poems_of_poet" class="table table-hover">
+		<table id="poems_of_poet" class="table table-hover lead open-accessibility-text">
 			<tbody>
 
 			</tbody>
@@ -152,6 +154,28 @@
     }
     $('#bahr_dd').select2(dd_options);
     $('#age_dd').select2(dd_options);
+
+    $('#main').openAccessibility({
+      // override the settings of the Accessibility Tools
+      grayscale: 0,
+      brightness: 100,
+      contrast: 100,
+      maxZoomLevel: 3,
+      minZoomLevel: 0.5,
+      zoomStep: 0.2,
+      zoom: 0.8,
+      cursor: false,
+      invert: false,
+
+      // text selector
+      textSelector: '.open-accessibility-text',
+
+      // s(mall), m(edium), l(arge)
+      iconSize: 'm',
+
+      // local
+      localization: ['ar'],
+    });
 
   });
 
