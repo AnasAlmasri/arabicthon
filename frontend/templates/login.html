@@ -40,8 +40,23 @@
         font-size: 1.5rem;
     }
 
+    #error_msg {
+        text-align: center;
+    }
+
+    #error_msg p {
+        font-size: 1rem;
+        margin-top: 3vh;
+        padding-bottom: 0.75rem;
+        text-align: center;
+        color: #dc3545;
+        text-transform: uppercase;
+        border-bottom: solid 2px;
+        display: inline-block;
+    }
+
     #form label {
-        margin-top: 12.5%;
+        margin-top: 10.5%;
     }
 
     #form input {
@@ -61,8 +76,7 @@
 
 
     .form-group, .form-group-btn, hr {
-        padding: 2% auto;
-        margin: 2% 5%;
+        margin: 1% 10%;
     }
 
     #form_btn {
@@ -111,8 +125,14 @@
 
             {% csrf_token %}
 
+            {% if err_msg %}
+                <div id="error_msg">
+                    <p>الرجاء ادخال البيانات الصحيحة</p>
+                </div>
+            {% endif %}
+
             <div id="username_div" class="form-group">
-                <label for="username">تسم المستخدم</label>
+                <label for="username">اسم المستخدم</label>
                 <input type="text" class="form-control" id="username" name="username">
             </div>
 
