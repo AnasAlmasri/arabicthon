@@ -1,7 +1,7 @@
 import pickle
 import pandas as pd
 from sklearn.utils import shuffle
-from preprocess import datapreprocessing
+from preprocess import DataPreprocessing
 from sklearn.pipeline import make_pipeline
 from sklearn.linear_model import LogisticRegression
 from sklearn.feature_extraction.text import TfidfVectorizer
@@ -16,7 +16,7 @@ class LogisticRegression:
         loadeddata.reset_index(drop=True, inplace=True)
 
         loadeddata["processed"] = loadeddata["String"].apply(
-            datapreprocessing.preprocess
+            DataPreprocessing.preprocess
         )
         loadeddata = shuffle(loadeddata)
 
