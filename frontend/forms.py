@@ -19,13 +19,3 @@ class NewUserForm(UserCreationForm):
         if commit:
             user.save()
         return user
-
-    def clean_username(self, *args, **kwargs):
-        username = self.cleaned_data['username']
-        if len(username) > 150:
-            raise
-        valid_symbols = ["@",".","+","-","_" ]
-        check_symbols = [x for x in username if x in valid_symbols]
-        if check_symbols:
-            raise
-        

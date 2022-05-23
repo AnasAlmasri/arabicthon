@@ -111,18 +111,45 @@ def library(request):
 
 
 def user_signup(request):
+    arabic_labels = [
+        'اسم المستخدم',
+        'البريد الإلكتروني',
+        'كلمه السر',
+        'تأكيد كلمة المرور'
+    ]
+    err_msg = ""
+    context = {'labels': arabic_labels}
     if request.method == 'POST':
         form = NewUserForm(request.POST)
         if form.is_valid():
             user = form.save()
             login(request, user)
-            messages.success(request, 'Signup Successful')
-            return render(request, 'index.html', context={})
-
-        messages.error(request, "Unsuccessful Signup. Invalid information.")
-
-    signup_form = NewUserForm()
-    return render(request, 'signup.html', context={"signup_form":signup_form})
+            return HttpResponseRedirect(reverse('profile'))
+        else:
+            # username = request.POST.get('username')
+            # password1 = request.POST.get('password1')
+            # password2 = request.POST.get('password2')
+            # # username handler
+            # valid_symbols = ["@",".","+","-","_"]
+            # check_symbols = [x for x in username if x in valid_symbols]
+            # if len(username) > 150:
+            #     err_msg = "Username is longer than 150 characters"
+            # elif check_symbols:
+            #     err_msg = 'Invalid characters'
+            # # password handler
+            # elif len(password1) < 8 or len(password2) < 8:
+            #     err_msg = "Password is less than 8 characters"
+            # elif password1.isnumeric() or password2.isnumeric():
+            #     err_msg = "Password only contains numbers"
+            # elif password1 != password2:
+            #     err_msg = "Passwords do not match"
+            # print(err_msg)
+            # return render(request, 'signup.html', context={"signup_form":signup_form, "err_msg": err_msg})
+            context['signup_form'] = form
+    else:
+        signup_form = NewUserForm()
+        context['signup_form'] = signup_form
+    return render(request, 'signup.html', context)
 
 
 def user_login(request):
@@ -132,14 +159,13 @@ def user_login(request):
         if request.method == 'POST':
             username = request.POST.get('username')
             password = request.POST.get('password')
-
             user = authenticate(username=username, password=password)
             if user:
                 login(request, user)
                 return HttpResponseRedirect(reverse('profile'))
-            return HttpResponse("Username or password entered is incorrect")
-        else:
-            return render(request, 'login.html', context={})
+            else:
+                return render(request, 'login.html', context={'user_auth': user})
+    return render(request, 'login.html', context={'user_auth': 'ignore'})
 
 
 @login_required
@@ -151,19 +177,3 @@ def profile_page(request):
 def user_logout(request):
     logout(request)
     return HttpResponseRedirect(reverse('index'))
-
-
-
-# def search(request):
-#     search_dict = {}
-#     if request.method == 'POST':
-#         search_val = request.POST['search_val']
-#         conn = sqlite3.connect('db.sqlite3')
-#         c = conn.cursor()
-#         c.execute(f"SELECT * FROM poem_dataset WHERE bayt LIKE '%{search_val}%' ")
-#         q_out = c.fetchall()
-#         c.close()
-#         search_dict = {'results': q_out}
-#         return render(request, 'search_results.html', context=search_dict)
-#     else:
-#         return render(request, 'search_results.html', context=search_dict)
