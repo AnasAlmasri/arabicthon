@@ -81,9 +81,10 @@ select {
 }
 
 .bg-book-outermost {
-    display: flex;
+    display: inline-block;
     margin-left: 5%;
-    margin-top: 8%;
+    margin-top: 0%;
+    padding-top: 2%;
     margin-bottom: 20px;
     width: 90%;
     height: 650px;
@@ -91,20 +92,21 @@ select {
 }
 
 .bg-book-outer {
+    display: inline-block;
     position: relative;
 }
 
 #left_page_div {
     float: left;
     width: 49%;
-    height: 80%;
+    height: 100%;
 }
 
 #page_separator {
     float: left;
     background: #dee2e6;
     width: 0.1%;
-    height: 70%;
+    height: 90%;
     margin-top: 2%;
     margin-bottom: 2%;
     display: block;
@@ -115,7 +117,7 @@ select {
 #right_page_div {
     float: left;
     width: 49%;
-    height: 80%;
+    height: 100%;
 
 }
 
