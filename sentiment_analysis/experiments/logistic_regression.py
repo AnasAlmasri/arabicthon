@@ -9,9 +9,9 @@ from sklearn.metrics import accuracy_score, classification_report
 from sklearn.model_selection import train_test_split, GridSearchCV
 
 
-class LOGREG:
+class LogisticRegression:
     @staticmethod
-    def TrainModel():
+    def train_model():
         loadeddata = pd.read_csv("poempandas.csv", index_col=0)
         loadeddata.reset_index(drop=True, inplace=True)
 
