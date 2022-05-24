@@ -1,4 +1,6 @@
 import json
+import pickle
+import os
 import sqlite3
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
@@ -6,6 +8,7 @@ from django.http import JsonResponse
 
 from src.poet_scraper import PoetScraper
 from src.explainer import WordInterpretation
+from sentiment_analysis.wrapper import ModelWrapper
 
 
 @csrf_exempt
@@ -36,6 +39,38 @@ def ajax_get_meaning(request):
             text = WordInterpretation.get_meaning(word)
 
             return JsonResponse({"meaning": text}, status=200)
+
+        else:
+
+            return JsonResponse({"error": "Something went wrong!"}, status=400)
+
+
+@csrf_exempt
+def ajax_get_sentiment(request):
+    # request should be ajax and method should be POST.
+    if request.method == "POST":
+
+        text = request.POST.get("text")
+
+        if text:
+
+            script_dir = os.path.dirname(__file__)
+            rel_path = "../sentiment_analysis/models/logregmodel.pkl"
+            abs_file_path = os.path.join(script_dir, rel_path)
+            model = pickle.load(open(abs_file_path, "rb"))
+            pred = ModelWrapper.predict_logreg(text, model)
+
+            try:
+                pp = pred.tolist()[0]
+                p = "غير معروف"
+                if pp == 1:
+                    p = "محتوى إيجابي (غزل)"
+                elif pp == 2:
+                    p = "محتوى سلبي (هجاء)"
+            except:
+                p = ""
+
+            return JsonResponse({"pred": p}, status=200)
 
         else:
 

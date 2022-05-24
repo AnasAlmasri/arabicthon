@@ -96,7 +96,7 @@ function renderPoems(poems) {
     var table_content = "";
     for (var i = 0; i < poems.length; i++) {
         var obj = poems[i];
-        table_content += "<tr>" + "<td>" + obj.shatr_left + "</td>" + "<td>" + obj.shatr_right + "</td>" + "</tr>"
+        table_content += "<tr>" + "<td class=\"clickableRow\">" + obj.shatr_left + "</td>" + "<td class=\"clickableRow\">" + obj.shatr_right + "</td>" + "</tr>"
     }
 
     $("#poems_of_poet > tbody").html(table_content);
@@ -118,6 +118,24 @@ function getMeaning() {
         data: { "word": word },
         success: function (response) {
             $("#word_meaning").html(response["meaning"]);
+        }
+    });
+}
+
+function getSentiment() {
+    var text = "";
+    $(".highlight").each(function () {
+        $.each(this.cells, function () {
+            text += $(this).text() + " ";
+        });
+    });
+
+    $.ajax({
+        type: "POST",
+        url: "/get_sentiment/",
+        data: { "text": text },
+        success: function (response) {
+            $("#sentiment").html(response["pred"]);
         }
     });
 }

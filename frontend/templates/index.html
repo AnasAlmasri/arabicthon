@@ -73,7 +73,7 @@
 							<div id="sentiment"></div>
 						</td>
 						<td style="text-align: right">
-							<button type="submit" onclick="" class="btn btn-primary">غزل أم هجاء</button>
+							<button type="submit" onclick="getSentiment()" class="btn btn-primary">غزل أم هجاء</button>
 						</td>
 					</tr>
 					<tr>
@@ -225,6 +225,10 @@
       // local
       localization: ['ar'],
     });
+
+	$('table[id^=poems_of_poet]').on('click', 'tbody tr', function(event) {
+		$(this).addClass('highlight').siblings().removeClass('highlight');
+	});
 
   });
 

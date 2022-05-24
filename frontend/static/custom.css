@@ -157,3 +157,7 @@ select {
     padding-left: 50px;
     padding-right: 50px;
 }
+
+.table tbody tr.highlight td {
+    background-color: #ddd;
+}
