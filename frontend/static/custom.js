@@ -7,6 +7,8 @@ function showOrHideSearchFields(action, fieldList) {
 function renderSearchForm(mode) {
     $("#poet_details_div").hide();
     $("#get_poems_div").hide();
+    $("#poem_options").hide();
+    $("#poet_details_div").hide();
     switch (mode) {
         case 'poet':
             $("#radio_poet").prop("checked", true);
@@ -101,4 +103,21 @@ function renderPoems(poems) {
 
     // show poems
     $("#get_poems_div").show();
+}
+
+function renderOptions() {
+    $("#poem_options").show();
+    $("#poet_details_div").hide();
+}
+
+function getMeaning() {
+    var word = $("#word_search").val();
+    $.ajax({
+        type: "POST",
+        url: "/get_meaning/",
+        data: { "word": word },
+        success: function (response) {
+            $("#word_meaning").html(response["meaning"]);
+        }
+    });
 }

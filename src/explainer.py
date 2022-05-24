@@ -10,7 +10,7 @@ class WordInterpretation:
         soup = BeautifulSoup(page.content, "html.parser")
         results = soup.body  # find(id='top')
         results = soup.find(class_="termDefintion")
-        results = results.contents[0].getText()
+        results = str(results.contents[0])
         results = str(results).strip()
         return results
 

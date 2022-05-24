@@ -43,9 +43,50 @@
     {% elif search_results %}
 		<script>
 			$(document).ready(function() {
-				renderPoems('{{ search_results }}')
+				renderOptions();
+				renderPoems('{{ search_results }}');
 			})
 		</script>
+
+		<div id="poem_options">
+			<table id="options_table" class="table" style="width: 80%">
+				<tbody>
+					<tr>
+						<td>
+							<div id="word_meaning"></div>
+						</td>
+						<td style="text-align: right">
+							<input type="text" id="word_search">
+							<button type="submit" onclick="getMeaning()" class="btn btn-primary">معاني الكلمات</button>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<div id="poem_generator"></div>
+						</td>
+						<td style="text-align: right">
+							<button type="submit" onclick="" class="btn btn-primary">تأليف الشعر</button>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<div id="sentiment"></div>
+						</td>
+						<td style="text-align: right">
+							<button type="submit" onclick="" class="btn btn-primary">غزل أم هجاء</button>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<div id="annotation"></div>
+						</td>
+						<td style="text-align: right">
+							<button type="submit" onclick="" class="btn btn-primary">ملاحظة</button>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
 	{% else %}
 		<script>
 			$(document).ready(function() {
