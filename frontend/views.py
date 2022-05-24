@@ -119,32 +119,15 @@ def user_signup(request):
     ]
     err_msg = ""
     context = {'labels': arabic_labels}
-    if request.method == 'POST':
+    if request.user.is_authenticated:
+        return HttpResponseRedirect(reverse('profile'))
+    elif request.method == 'POST':
         form = NewUserForm(request.POST)
         if form.is_valid():
             user = form.save()
             login(request, user)
             return HttpResponseRedirect(reverse('profile'))
         else:
-            # username = request.POST.get('username')
-            # password1 = request.POST.get('password1')
-            # password2 = request.POST.get('password2')
-            # # username handler
-            # valid_symbols = ["@",".","+","-","_"]
-            # check_symbols = [x for x in username if x in valid_symbols]
-            # if len(username) > 150:
-            #     err_msg = "Username is longer than 150 characters"
-            # elif check_symbols:
-            #     err_msg = 'Invalid characters'
-            # # password handler
-            # elif len(password1) < 8 or len(password2) < 8:
-            #     err_msg = "Password is less than 8 characters"
-            # elif password1.isnumeric() or password2.isnumeric():
-            #     err_msg = "Password only contains numbers"
-            # elif password1 != password2:
-            #     err_msg = "Passwords do not match"
-            # print(err_msg)
-            # return render(request, 'signup.html', context={"signup_form":signup_form, "err_msg": err_msg})
             context['signup_form'] = form
     else:
         signup_form = NewUserForm()

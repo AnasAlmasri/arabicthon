@@ -1,4 +1,4 @@
 $(document).ready(function() {
-    $('#main').empty();
-    $('#header').empty();
+    $('#header').remove();
+    $('#main').remove();
 })

@@ -4,280 +4,100 @@
 
 {% load static %}
 
-{% load custom_filter %}
-
 {% block additional_head %}
 
 <script src="{% static '/assets/js/de_baser.js' %}"></script>
 
-<style>
-
-    #right_panel {
-        content: "";
-        position: absolute;
-        z-index: 4;
-        min-height: 100vh;
-        padding: 3.5%;
-        background-color: #f0f0f0;
-        width: 25vw;
-        right: 0%;
-        top: 0%;
-    }
-
-    #right_panel h2 {
-        font-family: 'AlmaraiRegular';
-        font-weight: 900;
-        text-align: center;
-        font-size: 2.5rem;
-    }
-
-    #h2 {
-        margin-bottom: 12.5vh
-    }
-
-    h4 {
-        font-family: 'AlmaraiRegular';
-        font-weight: 200;
-        text-align: center;
-        font-size: 1.5rem;
-    }
-
-    h5 {
-        font-family: 'AlmaraiRegular';
-        font-weight: 900;
-        font-size: 1.5rem;
-        color: #dc3545;
-        margin-right: 1.5vw;
-    }
-
-    #error_msg {
-        text-align: center;
-    }
-
-    #error_msg p {
-        font-size: 1rem;
-        margin-top: 3vh;
-        padding-bottom: 0.75rem;
-        text-align: center;
-        color: #dc3545;
-        text-transform: uppercase;
-        border-bottom: solid 2px;
-        display: inline-block;
-    }
-
-    #form label {
-        margin-top: 12.5%;
-    }
-
-    #form input {
-        background-color: transparent;
-        border: none;
-        border-bottom: #000000 solid 2px;
-        border-radius: 0px;
-        transition: 0.3s ease-in;
-        width: 90%;
-    }
-    
-    /* 
-    #form input:focus {
-        border: none;
-        margin: auto 5%;
-        transition: 0.3s ease-in;
-        border-bottom: #36374D solid 2px;
-    } */
-
-    .form-group, .form-group-btn, hr {
-        padding: 2% auto;
-        margin: 2% 5%;
-    }
-
-    #form_btn {
-        width: 100%;
-        text-align: center;
-    }
-
-    #form_btn button {
-        margin-top: 7vh;
-        text-align: center;
-        top: 50%;
-        padding: 3% 15%;
-        border-radius: 50px;
-        font-weight: 700;
-        font-size: 1.125rem;
-        border: solid 4px #36374D;
-        background-color: #36374D;
-    }
-
-    #form_btn button:hover {
-        background-color: #f0f0f0;
-        color: #36374D;
-        transition: 0.3s ease-in-out;
-    }
-
-    #error_msg {
-        text-align: center;
-    }
-
-    #error_msg p {
-        font-size: 1rem;
-        margin-top: 3vh;
-        padding-bottom: 0.75rem;
-        text-align: center;
-        color: #dc3545;
-        text-transform: uppercase;
-        border-bottom: solid 2px;
-        display: inline-block;
-    }
-
-    #form label {
-        margin-top: 10.5%;
-    }
-
-    #form input {
-        background-color: transparent;
-        border: none;
-        border-bottom: #000000 solid 2px;
-        border-radius: 0px;
-        transition: 0.3s ease-in;
-    }
-
-    #form input:focus {
-        width: 90%;
-        margin: auto 5%;
-        transition: 0.3s ease-in;
-        border-bottom: #36374D solid 2px;
-    }
-
-
-    .form-group, .form-group-btn, hr {
-        margin: 1% 10%;
-    }
-
-    #form_btn {
-        width: 100%;
-        text-align: center;
-    }
-
-    #form_btn button {
-        margin-top: 7vh;
-        text-align: center;
-        top: 50%;
-        padding: 3% 15%;
-        border-radius: 50px;
-        font-weight: 700;
-        font-size: 1.125rem;
-        border: solid 4px #36374D;
-        background-color: #36374D;
-        outline: none;
-    }
-
-    #form_btn button:hover {
-        background-color: #f0f0f0;
-        color: #36374D;
-        transition: 0.3s ease-in-out;
-    }
-
-    .signup_tooltip {
-        display:inline-block;
-        margin: 3% auto;
-        position:relative;
-        text-align:left;
-    }
-
-    .signup_tooltip .top {
-        min-width:200px;
-        top:-20px;
-        left:-230%;
-        transform:translate(-50%, -100%);
-        padding:10px 20px;
-        color:#36374D;
-        background-color:#f0f0f0;
-        font-weight:normal;
-        font-size:13px;
-        border-radius:8px;
-        position:absolute;
-        z-index:99999999;
-        box-sizing:border-box;
-        box-shadow:0 1px 8px rgba(0,0,0,0.5);
-        display:none;
-    }
-
-    .signup_tooltip:hover .top {
-        display:block;
-    }
-
-    .signup_tooltip .top i {
-        position:absolute;
-        top:100%;
-        left:85%;
-        margin-left:-12px;
-        width:24px;
-        height:12px;
-        overflow:hidden;
-    }
-
-    .signup_tooltip .top i::after {
-        content:'';
-        position:absolute;
-        width:12px;
-        height:12px;
-        left:50%;
-        transform:translate(-50%,-50%) rotate(45deg);
-        background-color:#f0f0f0;
-        box-shadow:0 1px 8px rgba(0,0,0,0.5);
-    }
-
-</style>
+<link href="{% static '/assets/css/signup_login.css' %}" rel="stylesheet">
 
 {% endblock %}
 
 
 {% block alt_main %}
 
-<div id="right_panel">
+<div id="signup_div">
 
-    <div id="signup_form_div" class="">
+    <div id="right_panel">
 
-        <div id="h2">
-            <h2>مرحبا بكم في </h2>
-            <h2>موقعنا</h2>
-        </div>
+        <div id="signup_form_div" class="">
 
-        <h4>تسجيل دخول المستخدم</h4>
-
-        <form id="form" method="POST" action=".">
-
-            {% csrf_token %}
-
-            {% if signup_form.errors %}
-                <div id="error_msg">
-                    <p>الرجاء ادخال البيانات الصحيحة</p>
-                </div>
-            {% endif %}
-
-            {% for afield in signup_form %}
-
-                {{ labels|return_item:forloop.counter0 }}
-                <div class="signup_tooltip">
-                    {% if afield.help_text %}
-                    <h5>؟</h5>
-                    <div class="top">
-                        <p>{{afield.help_text}}</p>
-                        <i></i>
-                    </div>
-                    {% endif %}
-                </div>
-                </br>
-                {{afield}}
-                </br>
-
-            {% endfor %}
-
-            <div id="form_btn">
-                <button type="submit" class="btn btn-primary form-group-btn">تسجيل دخول</button>
+            <div id="h2">
+                <h2>مرحبا بكم في </h2>
+                <h2>موقعنا</h2>
             </div>
 
-        </form>
+            <h4>إنشاء حساب</h4>
+
+            <form id="form" method="POST" action=".">
+
+                {% csrf_token %}
+
+                {% if signup_form.errors %}
+                    <div id="error_msg">
+                        <p>الرجاء ادخال البيانات الصحيحة</p>
+                    </div>
+                {% endif %}
+
+                <div id="username_div" class="form-group">
+                    <label for="username">اسم المستخدم</label>
+                    <div class="signup_tooltip">
+                        <h5>؟</h5>
+                        <div class="top">
+                            <p>
+                            Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.
+                            </p>
+                            <i></i>
+                        </div>
+                    </div>
+                    <input type="text" class="form-control" name="username" maxlength="150" required="" id="username"/>
+                </div>
+
+                <div id="email_div" class="form-group">
+                    <label for="email">البريد الإلكتروني</label>
+                    <div id="email_toolkit" class="signup_tooltip"><h5>&nbsp;</h5></div>
+                    <input type="email" class="form-control" name="email" required="" id="email" />
+                </div>
+
+                <div id="password1_div" class="form-group">
+                    <label for="password1">كلمه السر</label>
+                    <div class="signup_tooltip">
+                        <h5>؟</h5>
+                        <div class="top">
+                            <p></p>
+                            <ul>
+                            <li>
+                                Your password can’t be too similar to your other personal information.
+                            </li>
+                            <li>Your password must contain at least 8 characters.</li>
+                            <li>Your password can’t be a commonly used password.</li>
+                            <li>Your password can’t be entirely numeric.</li>
+                            </ul>
+                            <p></p>
+                            <i></i>
+                        </div>
+                    </div>
+                    <input type="password" class="form-control" name="password1" autocomplete="new-password" required="" id="password1"/>
+                </div>
+
+                <div id="password2_div" class="form-group">
+                    <label for="password2">تأكيد كلمه السر</label>
+                    <div class="signup_tooltip">
+                        <h5>؟</h5>
+                        <div class="top">
+                            <p>Enter the same password as before, for verification.</p>
+                            <i></i>
+                        </div>
+                    </div>
+                    <input type="password" class="form-control" name="password2" autocomplete="new-password" required="" id="password2"/>
+                </div>
+
+                <div id="form_btn">
+                    <button type="submit" class="btn btn-primary form-group-btn">تسجيل دخول</button>
+                </div>
+
+            </form>
+
+        </div>
 
     </div>
 
