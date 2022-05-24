@@ -96,7 +96,6 @@ function renderPoems(poems) {
         var obj = poems[i];
         table_content += "<tr>" + "<td>" + obj.shatr_left + "</td>" + "<td>" + obj.shatr_right + "</td>" + "</tr>"
     }
-    // table_content = "<tr>" + "<td>" + "1" + "</td>" + "<td>" + "b" + "</td>" + "</tr>"
 
     $("#poems_of_poet > tbody").html(table_content);
 
