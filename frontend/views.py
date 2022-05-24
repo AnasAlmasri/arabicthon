@@ -5,6 +5,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse
 
 from src.poet_scraper import PoetScraper
+from src.explainer import WordInterpretation
 
 
 @csrf_exempt
@@ -18,6 +19,23 @@ def ajax_poet_details(request):
             text = PoetScraper.search(poet_name.split(" "))
 
             return JsonResponse({"text": text}, status=200)
+
+        else:
+
+            return JsonResponse({"error": "Something went wrong!"}, status=400)
+
+
+@csrf_exempt
+def ajax_get_meaning(request):
+    # request should be ajax and method should be POST.
+    if request.method == "POST":
+        word = request.POST.get("word")
+
+        if word:
+
+            text = WordInterpretation.get_meaning(word)
+
+            return JsonResponse({"meaning": text}, status=200)
 
         else:
 
