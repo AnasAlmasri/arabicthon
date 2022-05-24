@@ -1,7 +1,7 @@
-from data_cleaner import DataCleaner
-from preprocess import DataPreprocessing
-from experiments.logistic_regression import LogisticRegression
-from poem_scraper import PoemScraper
+from .data_cleaner import DataCleaner
+from .preprocess import DataPreprocessing
+from .experiments.logistic_regression import LogisticRegression
+from .poem_scraper import PoemScraper
 
 
 class ModelWrapper:
