@@ -119,8 +119,6 @@ def index(request):
                 where_clause += f"bayt LIKE '%{keyword}%'"
 
                 if bahr is not None:
-                    print("===========")
-                    print(bahr)
                     where_clause += f" AND bahr = '{bahr}'"
 
                 if age is not None:
