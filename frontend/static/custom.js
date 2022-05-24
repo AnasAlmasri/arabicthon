@@ -5,6 +5,8 @@ function showOrHideSearchFields(action, fieldList) {
     }
 }
 function renderSearchForm(mode) {
+    $("#poet_details_div").hide();
+    $("#get_poems_div").hide();
     switch (mode) {
         case 'poet':
             $("#radio_poet").prop("checked", true);
@@ -72,4 +74,32 @@ function getPoems() {
             $("#get_poems_div").show();
         }
     });
+}
+
+function renderPoems(poems) {
+    // clean up and parse json
+    var re = new RegExp('&quot;', 'g');
+    poems = JSON.parse(poems.replace(re, '"'));
+
+    // hide search form
+    $("#search_form").hide();
+
+    // hide poet details
+    $("#poet_details_div").hide();
+
+    // set header text
+    $("#reader_poet_name").text("");
+
+    // build table content
+    var table_content = "";
+    for (var i = 0; i < poems.length; i++) {
+        var obj = poems[i];
+        table_content += "<tr>" + "<td>" + obj.shatr_left + "</td>" + "<td>" + obj.shatr_right + "</td>" + "</tr>"
+    }
+    // table_content = "<tr>" + "<td>" + "1" + "</td>" + "<td>" + "b" + "</td>" + "</tr>"
+
+    $("#poems_of_poet > tbody").html(table_content);
+
+    // show poems
+    $("#get_poems_div").show();
 }
