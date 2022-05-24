@@ -60,15 +60,15 @@ def ajax_get_sentiment(request):
             model = pickle.load(open(abs_file_path, "rb"))
             pred = ModelWrapper.predict_logreg(text, model)
 
+            p = "غير معروف"
             try:
                 pp = pred.tolist()[0]
-                p = "غير معروف"
                 if pp == 1:
                     p = "محتوى إيجابي (غزل)"
                 elif pp == 2:
                     p = "محتوى سلبي (هجاء)"
             except:
-                p = ""
+                pass
 
             return JsonResponse({"pred": p}, status=200)
 
