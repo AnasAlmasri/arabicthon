@@ -1,3 +1,4 @@
+import json
 import sqlite3
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
@@ -118,6 +119,8 @@ def index(request):
                 where_clause += f"bayt LIKE '%{keyword}%'"
 
                 if bahr is not None:
+                    print("===========")
+                    print(bahr)
                     where_clause += f" AND bahr = '{bahr}'"
 
                 if age is not None:
@@ -125,11 +128,21 @@ def index(request):
 
                 conn = sqlite3.connect("db.sqlite3")
                 c = conn.cursor()
-                c.execute(f"SELECT * FROM poem_dataset WHERE {where_clause}")
+                c.execute(
+                    f"SELECT shatr_left, shatr_right FROM poem_dataset WHERE {where_clause}"
+                )
                 queryset = c.fetchall()
                 c.close()
 
-                index_dict["search_results"] = queryset
+                i = 0
+                poem_rows = []
+                for q in queryset:
+                    poem_rows.append({"shatr_left": q[0], "shatr_right": q[1]})
+                    i += 1
+                    if i == 7:
+                        break
+
+                index_dict["search_results"] = json.dumps(poem_rows)
 
             else:
                 raise Exception("Unknown search mode. Contact IT")
@@ -138,6 +151,8 @@ def index(request):
         msg = str(e)
 
     index_dict["msg"] = msg
+
+    print(index_dict)
 
     return render(request, "index.html", context=index_dict)
 

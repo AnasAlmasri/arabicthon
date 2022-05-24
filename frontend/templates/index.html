@@ -17,11 +17,11 @@
 
     {% if poet_list %}
 
-	<script>
-		$(document).ready(function() {
-			$("#search_form").empty();
-		})
-	</script>
+    <script>
+      $(document).ready(function() {
+        $("#search_form").empty();
+      })
+    </script>
 
 		{% for row in poet_list %}
 			<div class="row">
@@ -39,6 +39,19 @@
 				{% endfor %}
 			</div>
         {% endfor %}
+
+    {% elif search_results %}
+		<script>
+			$(document).ready(function() {
+				renderPoems('{{ search_results }}')
+			})
+		</script>
+	{% else %}
+		<script>
+			$(document).ready(function() {
+				renderSearchForm('');
+			})
+		</script>
     {% endif %}
 
   </div>
@@ -140,11 +153,6 @@
 <script>
 
   $(document).ready(function() {
-
-    renderSearchForm('');
-
-	$("#poet_details_div").hide();
-	$("#get_poems_div").hide();
 
     var dd_options = {
       maximumSelectionLength: 5,
