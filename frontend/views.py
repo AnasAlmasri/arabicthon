@@ -230,22 +230,15 @@ def library(request):
 
 
 def user_signup(request):
-    arabic_labels = [
-        'اسم المستخدم',
-        'البريد الإلكتروني',
-        'كلمه السر',
-        'تأكيد كلمة المرور'
-    ]
-    err_msg = ""
-    context = {'labels': arabic_labels}
+    context={}
     if request.user.is_authenticated:
-        return HttpResponseRedirect(reverse('profile'))
+        return HttpResponseRedirect(reverse('index'))
     elif request.method == 'POST':
         form = NewUserForm(request.POST)
         if form.is_valid():
             user = form.save()
             login(request, user)
-            return HttpResponseRedirect(reverse('profile'))
+            return HttpResponseRedirect(reverse('index'))
         else:
             context['signup_form'] = form
     else:
@@ -256,7 +249,7 @@ def user_signup(request):
 
 def user_login(request):
     if request.user.is_authenticated:
-        return HttpResponseRedirect(reverse('profile'))
+        return HttpResponseRedirect(reverse('index'))
     else:
         if request.method == 'POST':
             username = request.POST.get('username')
@@ -264,18 +257,17 @@ def user_login(request):
             user = authenticate(username=username, password=password)
             if user:
                 login(request, user)
-                return HttpResponseRedirect(reverse('profile'))
+                return HttpResponseRedirect(reverse('index'))
             else:
                 return render(request, 'login.html', context={'user_auth': user})
     return render(request, 'login.html', context={'user_auth': 'ignore'})
 
 
 @login_required
-def profile_page(request):
-    return render(request, 'profile.html', context={})
-
-
-@login_required
 def user_logout(request):
     logout(request)
     return HttpResponseRedirect(reverse('index'))
+
+
+def comingsoon(request):
+    return render(request, 'comingsoon.html', context={})
