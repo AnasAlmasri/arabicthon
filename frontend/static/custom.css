@@ -37,17 +37,20 @@ body {
 }
 
 form,
-    label {
-        direction: rtl;
-        font-family: AlmaraiRegular !important;
-    }
-    h3 {
-        font-family: AlmaraiRegular !important;
-    }
-    select {
-        height: 100%;
-        width: 105%;
-    }
+label {
+    direction: rtl;
+    font-family: AlmaraiRegular !important;
+}
+
+h3 {
+    direction: rtl;
+    font-family: AlmaraiRegular !important;
+}
+
+select {
+    height: 100%;
+    width: 105%;
+}
 
 #poems_of_poet td {
     direction: rtl;

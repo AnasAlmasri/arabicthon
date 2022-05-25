@@ -74,6 +74,7 @@ function getPoems() {
 
             // show poems
             $("#get_poems_div").show();
+            $("#back_btn").show();
         }
     });
 }
@@ -103,6 +104,7 @@ function renderPoems(poems) {
 
     // show poems
     $("#get_poems_div").show();
+    $("#back_btn").show();
 }
 
 function renderOptions() {
