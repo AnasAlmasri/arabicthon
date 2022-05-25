@@ -10,7 +10,11 @@
 
         <nav id="navbar" class="navbar">
         <ul>
-            <li><a id="signup_login" href="{% url 'login' %}">تسجيل</a></li>
+            {% if user.is_authenticated %}
+                <li><a href="{% url 'logout' %}">خروج</a></li>
+            {% else %}
+                <li><a id="signup_login" href="{% url 'login' %}">تسجيل</a></li>
+            {% endif %}
             <li><a href="{% url 'comingsoon' %}">اتصل بنا</a></li>
             <li><a href="library.html" {% if request.path == '/library.html' %} class="active"{% endif %}>مكتبة</a></li>
             <li><a href="{% url 'comingsoon' %}">من نحن</a></li>
