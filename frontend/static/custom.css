@@ -1,7 +1,7 @@
 @font-face {
     font-family: AlmaraiRegular;
     src: url(../static/fonts/Almarai-Regular.ttf);
-  }
+}
 
 html {
     background: url(./img/main-bg.svg);
@@ -17,15 +17,16 @@ html {
 }
 
 .navbar,
-    li > a {
-        text-align: center;
-        font-family: AlmaraiRegular !important;
-        font-size: 18px !important;
-    }
-    .active {
-        border-bottom: 4px solid brown;
-        font-weight: 900 !important;
-    }
+li>a {
+    text-align: center;
+    font-family: AlmaraiRegular !important;
+    font-size: 18px !important;
+}
+
+.active {
+    border-bottom: 4px solid brown;
+    font-weight: 900 !important;
+}
 
 .search {
     margin-top: 40px;
@@ -48,36 +49,66 @@ form,
         width: 105%;
     }
 
+#poems_of_poet td {
+    direction: rtl;
+    font-family: AlmaraiRegular !important;
+}
+
+#poet_paragraph {
+    direction: rtl;
+    font-family: AlmaraiRegular !important;
+}
+
+select {
+    height: 100%;
+    width: 105%;
+}
+
 #search_form {
     padding: 50px;
     padding-top: 0px;
     padding-left: 80px;
 }
 
+#poet_details_div {
+    padding: 50px;
+    padding-top: 0px;
+    padding-left: 80px;
+}
+
+#get_poems_div {
+    padding: 50px;
+    padding-top: 0px;
+    padding-left: 80px;
+}
+
 .bg-book-outermost {
-    display: flex;
+    display: inline-block;
     margin-left: 5%;
-    margin-top: 8%;
+    margin-top: 0%;
+    padding-top: 2%;
+    margin-bottom: 20px;
     width: 90%;
     height: 650px;
     background: url(./img/main-bg.svg);
 }
 
 .bg-book-outer {
+    display: inline-block;
     position: relative;
 }
 
 #left_page_div {
-    float:left;
-    width:49%;
-    height:80%;
+    float: left;
+    width: 49%;
+    height: 100%;
 }
 
 #page_separator {
-    float:left;
-    background:#dee2e6;
+    float: left;
+    background: #dee2e6;
     width: 0.1%;
-    height: 70%;
+    height: 90%;
     margin-top: 2%;
     margin-bottom: 2%;
     display: block;
@@ -86,9 +117,9 @@ form,
 }
 
 #right_page_div {
-    float:left;
-    width:49%;
-    height:80%;
+    float: left;
+    width: 49%;
+    height: 100%;
 }
 
 .bg-book-inner-top {
@@ -126,4 +157,8 @@ form,
 .bg-book-outermost .container {
     padding-left: 50px;
     padding-right: 50px;
+}
+
+.table tbody tr.highlight td {
+    background-color: #ddd;
 }
