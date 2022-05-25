@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block additional_head %}
+
+<script src="{% static '/assets/js/de_baser.js' %}"></script>
+
+<link href="{% static '/assets/css/signup_login.css' %}" rel="stylesheet">
+
+{% endblock %}
+
+
+{% block alt_main %}
+
+<div id="login_div">
+    <div id="right_panel">
+
+        <div id="form_div" class="">
+
+            <div id="h2">
+                <h2>مرحبا بكم في </h2>
+                <h2>موقعنا</h2>
+            </div>
+
+            <h4>تسجيل دخول المستخدم</h4>
+
+            <form id="form" method="POST" action="{% url 'login' %}">
+
+                {% csrf_token %}
+
+                {% if not user_auth %}
+                    <div id="error_msg">
+                        <p>الرجاء ادخال البيانات الصحيحة</p>
+                    </div>
+                {% endif %}
+
+                <div id="username_div" class="form-group">
+                    <label for="username">اسم المستخدم</label>
+                    <input type="text" class="form-control" id="username" name="username">
+                </div>
+
+                <div id="password_div" class="form-group">
+                    <label for="password">كلمه السر</label>
+                    <input type="password" class="form-control" id="password" name="password">
+                </div>
+
+                <div id="form_btn">
+                    <button type="submit" value="login" class="btn btn-primary form-group-btn">تسجيل دخول</button>
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+</div>
+{% endblock %}
+
+
+{% block raw_js %}
+
+<script>
+    $('#form span.helptext').wrap('<div class="helptext_parent">?</div>')
+</script>
+
+{% endblock %}

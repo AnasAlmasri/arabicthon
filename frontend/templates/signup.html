@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block additional_head %}
+
+<script src="{% static '/assets/js/de_baser.js' %}"></script>
+
+<link href="{% static '/assets/css/signup_login.css' %}" rel="stylesheet">
+
+{% endblock %}
+
+
+{% block alt_main %}
+
+<div id="signup_div">
+
+    <div id="right_panel">
+
+        <div id="signup_form_div" class="">
+
+            <div id="h2">
+                <h2>مرحبا بكم في </h2>
+                <h2>موقعنا</h2>
+            </div>
+
+            <h4>إنشاء حساب</h4>
+
+            <form id="form" method="POST" action=".">
+
+                {% csrf_token %}
+
+                {% if signup_form.errors %}
+                    <div id="error_msg">
+                        <p>الرجاء ادخال البيانات الصحيحة</p>
+                    </div>
+                {% endif %}
+
+                <div id="username_div" class="form-group">
+                    <label for="username">اسم المستخدم</label>
+                    <div class="signup_tooltip">
+                        <h5>؟</h5>
+                        <div class="top">
+                            <p>
+                            Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.
+                            </p>
+                            <i></i>
+                        </div>
+                    </div>
+                    <input type="text" class="form-control" name="username" maxlength="150" required="" id="username"/>
+                </div>
+
+                <div id="email_div" class="form-group">
+                    <label for="email">البريد الإلكتروني</label>
+                    <div id="email_toolkit" class="signup_tooltip"><h5>&nbsp;</h5></div>
+                    <input type="email" class="form-control" name="email" required="" id="email" />
+                </div>
+
+                <div id="password1_div" class="form-group">
+                    <label for="password1">كلمه السر</label>
+                    <div class="signup_tooltip">
+                        <h5>؟</h5>
+                        <div class="top">
+                            <p></p>
+                            <ul>
+                            <li>
+                                Your password can’t be too similar to your other personal information.
+                            </li>
+                            <li>Your password must contain at least 8 characters.</li>
+                            <li>Your password can’t be a commonly used password.</li>
+                            <li>Your password can’t be entirely numeric.</li>
+                            </ul>
+                            <p></p>
+                            <i></i>
+                        </div>
+                    </div>
+                    <input type="password" class="form-control" name="password1" autocomplete="new-password" required="" id="password1"/>
+                </div>
+
+                <div id="password2_div" class="form-group">
+                    <label for="password2">تأكيد كلمه السر</label>
+                    <div class="signup_tooltip">
+                        <h5>؟</h5>
+                        <div class="top">
+                            <p>Enter the same password as before, for verification.</p>
+                            <i></i>
+                        </div>
+                    </div>
+                    <input type="password" class="form-control" name="password2" autocomplete="new-password" required="" id="password2"/>
+                </div>
+
+                <div id="form_btn">
+                    <button type="submit" class="btn btn-primary form-group-btn">تسجيل دخول</button>
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}
+
+
+{% block raw_js %}
+
+<script>
+    $('#signup_form span.helptext').wrap('<div class="helptext_parent">?</div>')
+</script>
+
+{% endblock %}

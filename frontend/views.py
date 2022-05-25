@@ -5,6 +5,14 @@ import sqlite3
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse
+from django.contrib import messages
+from frontend.forms import NewUserForm
+
+# login, logout
+from django.urls import reverse
+from django.contrib.auth.decorators import login_required
+from django.http import HttpResponseRedirect, HttpResponse
+from django.contrib.auth import authenticate, login, logout
 
 from src.poet_scraper import PoetScraper
 from src.explainer import WordInterpretation
@@ -119,6 +127,7 @@ def index(request):
     index_dict = {}
     msg = ""
     try:
+
         if request.method == "POST":
 
             where_clause = ""
@@ -203,10 +212,7 @@ def index(request):
 
     index_dict["msg"] = msg
 
-    print(index_dict)
-
     return render(request, "index.html", context=index_dict)
-
 
 def reader(request):
     reader_dict = {}
@@ -223,20 +229,53 @@ def library(request):
     return render(request, "library.html", context=library_dict)
 
 
-def search(request):
-    search_dict = {}
-
-    if request.method == "POST":
-        search_val = request.POST["search_val"]
-
-        conn = sqlite3.connect("db.sqlite3")
-        c = conn.cursor()
-        c.execute(f"SELECT * FROM poem_dataset WHERE bayt LIKE '%{search_val}%' ")
-        q_out = c.fetchall()
-        c.close()
-
-        search_dict = {"results": q_out}
-        return render(request, "search_results.html", context=search_dict)
-
+def user_signup(request):
+    arabic_labels = [
+        'اسم المستخدم',
+        'البريد الإلكتروني',
+        'كلمه السر',
+        'تأكيد كلمة المرور'
+    ]
+    err_msg = ""
+    context = {'labels': arabic_labels}
+    if request.user.is_authenticated:
+        return HttpResponseRedirect(reverse('profile'))
+    elif request.method == 'POST':
+        form = NewUserForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request, user)
+            return HttpResponseRedirect(reverse('profile'))
+        else:
+            context['signup_form'] = form
     else:
-        return render(request, "search_results.html", context=search_dict)
+        signup_form = NewUserForm()
+        context['signup_form'] = signup_form
+    return render(request, 'signup.html', context)
+
+
+def user_login(request):
+    if request.user.is_authenticated:
+        return HttpResponseRedirect(reverse('profile'))
+    else:
+        if request.method == 'POST':
+            username = request.POST.get('username')
+            password = request.POST.get('password')
+            user = authenticate(username=username, password=password)
+            if user:
+                login(request, user)
+                return HttpResponseRedirect(reverse('profile'))
+            else:
+                return render(request, 'login.html', context={'user_auth': user})
+    return render(request, 'login.html', context={'user_auth': 'ignore'})
+
+
+@login_required
+def profile_page(request):
+    return render(request, 'profile.html', context={})
+
+
+@login_required
+def user_logout(request):
+    logout(request)
+    return HttpResponseRedirect(reverse('index'))
