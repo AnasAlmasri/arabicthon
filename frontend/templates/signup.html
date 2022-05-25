@@ -44,7 +44,7 @@
                         <h5>؟</h5>
                         <div class="top">
                             <p>
-                            Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.
+                                مطلوب. 150 حرفًا أو أقل. حروف وأرقام و @ / . / + / - / _ فقط
                             </p>
                             <i></i>
                         </div>
@@ -66,11 +66,11 @@
                             <p></p>
                             <ul>
                             <li>
-                                Your password can’t be too similar to your other personal information.
+                                لا يمكن أن تكون كلمة السر مشابهة جدًا لمعلوماتك الشخصية الأخرى.
                             </li>
-                            <li>Your password must contain at least 8 characters.</li>
-                            <li>Your password can’t be a commonly used password.</li>
-                            <li>Your password can’t be entirely numeric.</li>
+                            <li>يجب أن تحتوي كلمة السر على 8 أحرف على الأقل.</li>
+                            <li>لا يمكن أن تكون كلمة السر شائعة الاستخدام.</li>
+                            <li>يجب أن تحتوي كلمة السر بأحرف و أرقام و رموز.</li>
                             </ul>
                             <p></p>
                             <i></i>
@@ -84,7 +84,7 @@
                     <div class="signup_tooltip">
                         <h5>؟</h5>
                         <div class="top">
-                            <p>Enter the same password as before, for verification.</p>
+                            <p>أدخل نفس السر المرور السابقة للتحقق.</p>
                             <i></i>
                         </div>
                     </div>
@@ -95,6 +95,10 @@
                     <button type="submit" class="btn btn-primary form-group-btn">تسجيل دخول</button>
                 </div>
 
+                <div id="signup_login_link">
+                    <h4><a href="{% url 'login' %}">هل لديك حساب؟ تسجيل الدخول</a></h4>
+                </div>
+
             </form>
 
         </div>
@@ -102,14 +106,5 @@
     </div>
 
 </div>
-
-{% endblock %}
-
-
-{% block raw_js %}
-
-<script>
-    $('#signup_form span.helptext').wrap('<div class="helptext_parent">?</div>')
-</script>
 
 {% endblock %}
