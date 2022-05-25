@@ -165,3 +165,8 @@ select {
 .table tbody tr.highlight td {
     background-color: #ddd;
 }
+
+#header {
+    margin-right: 20%;
+    margin-left: 5%;
+}
