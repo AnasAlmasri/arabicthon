@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block additional_head %}
+
+<script src="{% static '/assets/js/de_baser.js' %}"></script>
+
+<link href="{% static '/assets/css/signup_login.css' %}" rel="stylesheet">
+
+{% endblock %}
+
+
+{% block alt_main %}
+
+<div id="login_div">
+    <div id="right_panel">
+
+        <div id="form_div" class="">
+
+            <div id="h2">
+                <h2>مرحبا بكم في </h2>
+                <h2>موقعنا</h2>
+            </div>
+
+            <h4>ترقبونا.. قريبا</h4>
+
+            <div style="height: 10vh"></div>
+
+            <div id="comingsoon_msg">
+                <h4>سجل الان</h4>
+                <h4>للمزيد من المعلومات</h4>
+            </div>
+
+            <div style="height: 3vh"></div>
+
+            <div id="form_btn">
+                <button id='signup_link_as_btn' type="submit" value="login" class="btn btn-primary form-group-btn">سجل الان</button>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+{% endblock %}
+
+
+{% block raw_js %}
+
+<script>
+    $('#signup_link_as_btn').click(function() {
+        window.location.href = "{% url 'signup' %}";
+        return false;
+    });
+</script>
+
+{% endblock %}
