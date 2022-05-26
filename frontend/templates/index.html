@@ -74,12 +74,14 @@
 							<br>
 							<input type="text" id="model_word_search">
 							<br>
-							<select id="model_poet" style="width: 40%">
-								<option value="1">1</option>
-								<option value="2">2</option>
-								<option value="3">3</option>
-							</select>
-							<br>
+							{% if all_poet_dropdown %}
+								<select class="form-control select2" id="model_poet" style="width: 40%">
+									{% for p in all_poet_dropdown %}
+										<option value="{{ p.poet_name }}">{{ p.poet_name }}</option>
+									{% endfor %}
+								</select>
+								<br>
+							{% endif %}
 							<button type="submit" onclick="getPrediction()" class="btn btn-primary" style="margin: 5px !important;">قم بالتأليف</button>
 						</td>
 					</tr>
@@ -239,6 +241,8 @@
 	$('table[id^=poems_of_poet]').on('click', 'tbody tr', function(event) {
 		$(this).addClass('highlight').siblings().removeClass('highlight');
 	});
+
+	$('.select2').select2();
 
   });
 

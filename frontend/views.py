@@ -224,6 +224,18 @@ def index(request):
 
                 index_dict["search_results"] = json.dumps(poem_rows)
 
+                conn = sqlite3.connect("db.sqlite3")
+                c = conn.cursor()
+                c.execute(f"SELECT DISTINCT poet FROM poem_dataset order by 1")
+                queryset = c.fetchall()
+                c.close()
+
+                poet_list = []
+                for q in queryset:
+                    poet_list.append({"poet_name": q[0]})
+
+                index_dict["all_poet_dropdown"] = poet_list
+
             else:
                 raise Exception("Unknown search mode. Contact IT")
 
