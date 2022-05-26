@@ -13,9 +13,9 @@
 
 {% block left_content %}
 
-  <div class="container">
+{% if poet_list %}
 
-    {% if poet_list %}
+<div class="container" id="poet_container">
 
     <script>
       $(document).ready(function() {
@@ -41,6 +41,7 @@
 				{% endfor %}
 			</div>
         {% endfor %}
+	</div>
 
     {% elif search_results %}
 		<script>
@@ -50,56 +51,6 @@
 			})
 		</script>
 
-		<div id="poem_options">
-			<table id="options_table" class="table" style="width: 80%">
-				<tbody>
-					<tr>
-						<td>
-							<div id="word_meaning"></div>
-						</td>
-						<td style="text-align: right; padding-top: 20px; padding-bottom: 20px;">
-							<h6>معاني الكلمات</h6>
-							<br>
-							<input type="text" id="word_search">
-							<br>
-							<button type="submit" onclick="getMeaning()" class="btn btn-primary" style="margin: 5px !important;">ابحث</button>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<div id="poem_generator"></div>
-							<div id="loader_div" class="loader" style="display: none;"></div>
-						</td>
-						<td style="text-align: right; padding-top: 20px; padding-bottom: 20px;">
-							<h6>تأليف الشعر</h6>
-							<br>
-							<input type="text" id="model_word_search">
-							<br>
-							{% if all_poet_dropdown %}
-								<select class="form-control select2" id="model_poet" style="width: 40%; min-width: 40%;">
-									{% for p in all_poet_dropdown %}
-										<option value="{{ p.poet_name }}">{{ p.poet_name }}</option>
-									{% endfor %}
-								</select>
-								<br>
-							{% endif %}
-							<button type="submit" onclick="getPrediction()" class="btn btn-primary" style="margin: 5px !important;">قم بالتأليف</button>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<div id="sentiment"></div>
-						</td>
-						<td style="text-align: right; padding-top: 20px; padding-bottom: 20px;">
-							<h6>غزل أم هجاء</h6>
-							<span style="font-size: 14px; direction: rtl; font-family: AlmaraiRegular !important;">(حدد بيتاً من الشعر في الصفحة المجاورة لتحليل العاطفة)</span>
-							<br>
-							<button type="submit" onclick="getSentiment()" class="btn btn-primary" style="margin: 5px !important;">قم بالتحليل</button>
-						</td>
-					</tr>
-				</tbody>
-			</table>
-		</div>
 	{% else %}
 		<script>
 			$(document).ready(function() {
@@ -108,7 +59,57 @@
 		</script>
     {% endif %}
 
-  </div>
+	<div id="poem_options" style="display: none;">
+		<table id="options_table" class="table" style="width: 80%">
+			<tbody>
+				<tr>
+					<td>
+						<div id="word_meaning"></div>
+					</td>
+					<td style="text-align: right; padding-top: 20px; padding-bottom: 20px;">
+						<h6>معاني الكلمات</h6>
+						<br>
+						<input type="text" id="word_search">
+						<br>
+						<button type="submit" onclick="getMeaning()" class="btn btn-primary" style="margin: 5px !important;">ابحث</button>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<div id="poem_generator"></div>
+						<div id="loader_div" class="loader" style="display: none;"></div>
+					</td>
+					<td style="text-align: right; padding-top: 20px; padding-bottom: 20px;">
+						<h6>تأليف الشعر</h6>
+						<br>
+						<input type="text" id="model_word_search">
+						<br>
+						{% if all_poet_dropdown %}
+							<select class="form-control select2" id="model_poet" style="width: 40%; min-width: 40%;">
+								{% for p in all_poet_dropdown %}
+									<option value="{{ p.poet_name }}">{{ p.poet_name }}</option>
+								{% endfor %}
+							</select>
+							<br>
+						{% endif %}
+						<button type="submit" onclick="getPrediction()" class="btn btn-primary" style="margin: 5px !important;">قم بالتأليف</button>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<div id="sentiment"></div>
+					</td>
+					<td style="text-align: right; padding-top: 20px; padding-bottom: 20px;">
+						<h6>غزل أم هجاء</h6>
+						<span style="font-size: 14px; direction: rtl; font-family: AlmaraiRegular !important;">(حدد بيتاً من الشعر في الصفحة المجاورة لتحليل العاطفة)</span>
+						<br>
+						<button type="submit" onclick="getSentiment()" class="btn btn-primary" style="margin: 5px !important;">قم بالتحليل</button>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
 {% endblock %}
 
 

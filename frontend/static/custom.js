@@ -59,6 +59,7 @@ function getPoems() {
 
             // hide poet details
             $("#poet_details_div").hide();
+            $("#poet_container").hide();
 
             // set header text
             $("#reader_poet_name").text("مما كتبه " + poet_name);
@@ -75,6 +76,9 @@ function getPoems() {
             // show poems
             $("#get_poems_div").show();
             $("#back_btn").show();
+
+            $("#poem_options").show();
+
         }
     });
 }
