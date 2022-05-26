@@ -119,7 +119,7 @@ function getMeaning() {
         url: "/get_meaning/",
         data: { "word": word },
         success: function (response) {
-            $("#word_meaning").html(response["meaning"]);
+            $("#word_meaning").html('<span style="font-size: 16px; direction: rtl; font-family: AlmaraiRegular !important;"><br><br>' + response["meaning"] + '</span>');
         }
     });
 }
@@ -137,7 +137,7 @@ function getSentiment() {
         url: "/get_sentiment/",
         data: { "text": text },
         success: function (response) {
-            $("#sentiment").html(response["pred"]);
+            $("#sentiment").html('<span style="font-size: 16px; direction: rtl; font-family: AlmaraiRegular !important;"><br><br>' + response["pred"] + '</span>');
         }
     });
 }
