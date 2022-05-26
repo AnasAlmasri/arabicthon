@@ -119,7 +119,7 @@ function getMeaning() {
         url: "/get_meaning/",
         data: { "word": word },
         success: function (response) {
-            $("#word_meaning").html('<span style="font-size: 16px; direction: rtl; font-family: AlmaraiRegular !important;"><br><br>' + response["meaning"] + '</span>');
+            $("#word_meaning").html('<span style="text-align: right; font-size: 16px; direction: rtl; font-family: AlmaraiRegular !important;"><br><br>' + response["meaning"] + '</span>');
         }
     });
 }
@@ -137,7 +137,7 @@ function getSentiment() {
         url: "/get_sentiment/",
         data: { "text": text },
         success: function (response) {
-            $("#sentiment").html('<span style="font-size: 16px; direction: rtl; font-family: AlmaraiRegular !important;"><br><br>' + response["pred"] + '</span>');
+            $("#sentiment").html('<span style="text-align: right; font-size: 16px; direction: rtl; font-family: AlmaraiRegular !important;"><br><br>' + response["pred"] + '</span>');
         }
     });
 }
@@ -151,7 +151,7 @@ function getPrediction() {
         url: "/get_prediction/",
         data: { "poet": poet, "text": text },
         success: function (response) {
-            $("#poem_generator").html('<span style="font-size: 16px; direction: rtl; font-family: AlmaraiRegular !important;"><br><br>' + response["pred"] + '</span>');
+            $("#poem_generator").html('<span style="text-align: right; font-size: 16px; direction: rtl; font-family: AlmaraiRegular !important;"><br><br>' + response["pred"] + '</span>');
         }
     });
 }
