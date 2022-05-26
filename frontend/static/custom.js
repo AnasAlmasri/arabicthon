@@ -146,12 +146,33 @@ function getPrediction() {
     var poet = $("#model_poet").val();
     var text = $("#model_word_search").val();
 
+    $("#loader_div").show();
+
     $.ajax({
         type: "POST",
         url: "/get_prediction/",
+        tryCount: 0,
+        retryLimit: 3,
         data: { "poet": poet, "text": text },
         success: function (response) {
             $("#poem_generator").html('<span style="text-align: right; font-size: 16px; direction: rtl; font-family: AlmaraiRegular !important;"><br><br>' + response["pred"] + '</span>');
+            $("#loader_div").hide();
+        },
+        error: function (xhr, textStatus, errorThrown) {
+            if (textStatus == 'timeout') {
+                this.tryCount++;
+                if (this.tryCount <= this.retryLimit) {
+                    //try again
+                    setTimeout($.ajax(this), 3000);
+                    return;
+                }
+                return;
+            }
+            if (xhr.status == 500) {
+                //handle error
+            } else {
+                $("#loader_div").show();
+            }
         }
     });
 }
