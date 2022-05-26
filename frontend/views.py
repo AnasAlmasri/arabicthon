@@ -74,7 +74,7 @@ def ajax_get_sentiment(request):
                 pp = pred.tolist()[0]
                 if pp == 1:
                     p = "محتوى إيجابي"
-                elif pp == 2:
+                elif pp == 0:
                     p = "محتوى سلبي"
             except:
                 pass
