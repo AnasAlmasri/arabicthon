@@ -1,0 +1,71 @@
+#search_form .search-input-div {
+    margin: 2vh;
+}
+
+.button_div {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 5vh;
+}
+
+#poem_options .button_div {
+    width: 100%;
+    text-align: right;
+    margin-top: 2vh;
+    margin-bottom: 0vh;
+}
+
+#poem_options .button_div button {
+    font-size: 0.8rem;
+    padding: 1% 10%;
+}
+
+#poem_options tr td h6 {
+    font-weight: 600;
+    margin-top: 1vh;
+}
+
+.button_div button {
+    margin-top: 2vh;
+    text-align: center;
+    top: 50%;
+    padding: 1% 15%;
+    font-weight: 700;
+    font-size: 1.125rem;
+    border: solid 4px #36374D;
+    background-color: #36374D;
+    outline: none;
+}
+
+.button_div button:hover {
+    background-color: #f0f0f0;
+    color: #36374D;
+    transition: 0.3s ease-in-out;
+}
+
+#search_form label {
+    margin-top: 2.5%;
+}
+
+#search_form input, #poem_options input {
+    background-color: transparent;
+    border: none;
+    border-bottom: #000000 solid 2px;
+    border-radius: 0px;
+    transition: 0.3s ease-in;
+    padding: 2% 3%;
+    margin-top: 1vh;
+}
+
+#poem_options input {
+    padding: 0.75% 3%;
+    text-align: right;
+}
+
+#search_form input:focus, #poem_options input:focus {
+    transition: 0.3s ease-in;
+    border: none;
+    border-radius: 50px;
+    border-bottom: #36374D solid 2px;
+    background-color: #f0f0f0 !important;
+}
