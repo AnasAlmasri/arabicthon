@@ -21,12 +21,11 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("", views.index, name="index"),
     path("library", views.library, name="library"),
-
     path("poet_details/", views.ajax_poet_details, name="poet_details"),
     path("get_poems/", views.ajax_get_poems, name="get_poems"),
     path("get_meaning/", views.ajax_get_meaning, name="get_meaning"),
     path("get_sentiment/", views.ajax_get_sentiment, name="get_sentiment"),
-
+    path("get_prediction/", views.ajax_get_prediction, name="get_prediction"),
     path("login/", views.user_login, name="login"),
     path("accounts/login/", views.user_login, name="account_login"),
     path("logout/", views.user_logout, name="logout"),

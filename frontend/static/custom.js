@@ -141,3 +141,17 @@ function getSentiment() {
         }
     });
 }
+
+function getPrediction() {
+    var poet = $("#model_poet").val();
+    var text = $("#model_word_search").val();
+
+    $.ajax({
+        type: "POST",
+        url: "/get_prediction/",
+        data: { "poet": poet, "text": text },
+        success: function (response) {
+            $("#poem_generator").html('<span style="font-size: 16px; direction: rtl; font-family: AlmaraiRegular !important;"><br><br>' + response["pred"] + '</span>');
+        }
+    });
+}

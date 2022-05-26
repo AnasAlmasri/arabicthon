@@ -16,7 +16,8 @@ from django.contrib.auth import authenticate, login, logout
 
 from src.poet_scraper import PoetScraper
 from src.explainer import WordInterpretation
-from sentiment_analysis.wrapper import ModelWrapper
+from sentiment_analysis.wrapper import ModelWrapper as SentimentModel
+from poem_gen.wrapper import ModelWrapper as GenerationModel
 
 
 @csrf_exempt
@@ -66,7 +67,7 @@ def ajax_get_sentiment(request):
             rel_path = "../sentiment_analysis/models/logregmodel.pkl"
             abs_file_path = os.path.join(script_dir, rel_path)
             model = pickle.load(open(abs_file_path, "rb"))
-            pred = ModelWrapper.predict_logreg(text, model)
+            pred = SentimentModel.predict_logreg(text, model)
 
             p = "غير معروف"
             try:
@@ -79,6 +80,25 @@ def ajax_get_sentiment(request):
                 pass
 
             return JsonResponse({"pred": p}, status=200)
+
+        else:
+
+            return JsonResponse({"error": "Something went wrong!"}, status=400)
+
+
+@csrf_exempt
+def ajax_get_prediction(request):
+    # request should be ajax and method should be POST.
+    if request.method == "POST":
+
+        poet = request.POST.get("poet")
+        text = request.POST.get("text")
+
+        if text:
+
+            pred = GenerationModel.predict_poet(poet, text)
+
+            return JsonResponse({"pred": pred}, status=200)
 
         else:
 
@@ -214,6 +234,7 @@ def index(request):
 
     return render(request, "index.html", context=index_dict)
 
+
 def reader(request):
     reader_dict = {}
     return render(request, "reader.html", context=reader_dict)
@@ -230,44 +251,44 @@ def library(request):
 
 
 def user_signup(request):
-    context={}
+    context = {}
     if request.user.is_authenticated:
-        return HttpResponseRedirect(reverse('index'))
-    elif request.method == 'POST':
+        return HttpResponseRedirect(reverse("index"))
+    elif request.method == "POST":
         form = NewUserForm(request.POST)
         if form.is_valid():
             user = form.save()
             login(request, user)
-            return HttpResponseRedirect(reverse('index'))
+            return HttpResponseRedirect(reverse("index"))
         else:
-            context['signup_form'] = form
+            context["signup_form"] = form
     else:
         signup_form = NewUserForm()
-        context['signup_form'] = signup_form
-    return render(request, 'signup.html', context)
+        context["signup_form"] = signup_form
+    return render(request, "signup.html", context)
 
 
 def user_login(request):
     if request.user.is_authenticated:
-        return HttpResponseRedirect(reverse('index'))
+        return HttpResponseRedirect(reverse("index"))
     else:
-        if request.method == 'POST':
-            username = request.POST.get('username')
-            password = request.POST.get('password')
+        if request.method == "POST":
+            username = request.POST.get("username")
+            password = request.POST.get("password")
             user = authenticate(username=username, password=password)
             if user:
                 login(request, user)
-                return HttpResponseRedirect(reverse('index'))
+                return HttpResponseRedirect(reverse("index"))
             else:
-                return render(request, 'login.html', context={'user_auth': user})
-    return render(request, 'login.html', context={'user_auth': 'ignore'})
+                return render(request, "login.html", context={"user_auth": user})
+    return render(request, "login.html", context={"user_auth": "ignore"})
 
 
 @login_required
 def user_logout(request):
     logout(request)
-    return HttpResponseRedirect(reverse('index'))
+    return HttpResponseRedirect(reverse("index"))
 
 
 def comingsoon(request):
-    return render(request, 'comingsoon.html', context={})
+    return render(request, "comingsoon.html", context={})
