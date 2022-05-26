@@ -98,6 +98,8 @@ def ajax_get_prediction(request):
 
             pred = GenerationModel.predict_poet(poet, text)
 
+            pred = pred.replace(poet, "")
+
             return JsonResponse({"pred": pred}, status=200)
 
         else:
