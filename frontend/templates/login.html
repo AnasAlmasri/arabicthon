@@ -51,19 +51,14 @@
                     <button type="submit" value="login" class="btn btn-primary form-group-btn">تسجيل دخول</button>
                 </div>
 
+                <div id="signup_login_link">
+                    <h4><a href="{% url 'signup' %}">هل انت جديد؟ إنشاء حساب</a></h4>
+                </div>
+
             </form>
 
         </div>
 
     </div>
 </div>
-{% endblock %}
-
-
-{% block raw_js %}
-
-<script>
-    $('#form span.helptext').wrap('<div class="helptext_parent">?</div>')
-</script>
-
 {% endblock %}

@@ -10,12 +10,15 @@
 
         <nav id="navbar" class="navbar">
         <ul>
-            <li><a href="index.html">تواصل</a></li>
-            <li><a href="single-post.html">تدوينات</a></li>
-            <li><a href="about.html">أبيات</a></li>
-            <li><a href="contact.html">موسوعات</a></li>
+            {% if user.is_authenticated %}
+                <li><a href="{% url 'logout' %}">خروج</a></li>
+            {% else %}
+                <li><a id="signup_login" href="{% url 'login' %}">تسجيل</a></li>
+            {% endif %}
+            <li><a href="{% url 'comingsoon' %}">اتصل بنا</a></li>
             <li><a href="library.html" {% if request.path == '/library.html' %} class="active"{% endif %}>مكتبة</a></li>
-            <li><a href="./">رئيسية</a></li>
+            <li><a href="{% url 'comingsoon' %}">من نحن</a></li>
+            <li><a href="{% url 'index' %}">رئيسية</a></li>
         </ul>
         </nav><!-- .navbar -->
 
@@ -24,3 +27,13 @@
     </div>
 
 </header><!-- End Header -->
+
+<script>
+    rand_num = Math.floor((Math.random() * 2) + 1)
+    if (rand_num == 1) {
+        return_link = "{% url 'signup' %}"
+    } else {
+        return_link = "{% url 'login' %}"
+    }
+    $('#signup_login').attr('href', return_link)
+</script>
