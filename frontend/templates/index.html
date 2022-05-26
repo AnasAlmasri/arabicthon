@@ -68,6 +68,7 @@
 					<tr>
 						<td>
 							<div id="poem_generator"></div>
+							<div id="loader_div" class="loader" style="display: none;"></div>
 						</td>
 						<td style="text-align: right; padding-top: 20px; padding-bottom: 20px;">
 							<h6>تأليف الشعر</h6>
@@ -75,7 +76,7 @@
 							<input type="text" id="model_word_search">
 							<br>
 							{% if all_poet_dropdown %}
-								<select class="form-control select2" id="model_poet" style="width: 40%">
+								<select class="form-control select2" id="model_poet" style="width: 40%; min-width: 40%;">
 									{% for p in all_poet_dropdown %}
 										<option value="{{ p.poet_name }}">{{ p.poet_name }}</option>
 									{% endfor %}
