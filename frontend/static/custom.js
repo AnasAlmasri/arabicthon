@@ -123,7 +123,7 @@ function getMeaning() {
         url: "/get_meaning/",
         data: { "word": word },
         success: function (response) {
-            $("#word_meaning").html('<span style="text-align: right; font-size: 16px; direction: rtl; font-family: AlmaraiRegular !important;"><br><br>' + response["meaning"] + '</span>');
+            $("#word_meaning").html('<div class="alert info"><span style="text-align: right; font-size: 16px; direction: rtl; font-family: AlmaraiRegular !important;"><br><br>' + response["meaning"] + '</span></div>');
         }
     });
 }
@@ -141,7 +141,7 @@ function getSentiment() {
         url: "/get_sentiment/",
         data: { "text": text },
         success: function (response) {
-            $("#sentiment").html('<span style="text-align: right; font-size: 16px; direction: rtl; font-family: AlmaraiRegular !important;"><br><br>' + response["pred"] + '</span>');
+            $("#sentiment").html('<div class="alert info"><span style="text-align: right; font-size: 16px; direction: rtl; font-family: AlmaraiRegular !important;"><br><br>' + response["pred"] + '</span></div>');
         }
     });
 }
