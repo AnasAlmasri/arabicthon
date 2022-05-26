@@ -25,7 +25,11 @@ h4 {
     font-family: 'AlmaraiRegular';
     font-weight: 200;
     text-align: center;
-    font-size: 1.5rem;
+    font-size: 1.75rem;
+}
+
+#comingsoon_msg h4 {
+    font-weight: 900;
 }
 
 #signup_div h5 {
@@ -92,6 +96,7 @@ h4 {
 #form_btn {
     width: 100%;
     text-align: center;
+    margin-bottom: 5vh;
 }
 
 #form_btn button {
@@ -113,13 +118,39 @@ h4 {
     transition: 0.3s ease-in-out;
 }
 
+#signup_login_link {
+    display: block;
+    margin: auto;
+    text-align: center;
+}
+
+#signup_login_link h4 {
+    display: inline-block;
+    margin: 0 auto;
+    display: inline-block;
+    font-size: 1.25rem;
+    border-bottom: solid 1px transparent;
+    padding-bottom: 10px;
+}
+
+#signup_login_link h4:hover {
+    font-size: 1.25rem;
+    border-bottom: solid 1px #36374D;
+    padding-bottom: 10px;
+    font-weight: 900;
+}
+
+
 /* Tool Tip */
 
 #signup_div .signup_tooltip {
     display:inline-block;
     margin: 1% auto;
     position:relative;
-    text-align:left;
+}
+
+#signup_div .signup_tooltip p {
+    text-align: right;
 }
 
 #signup_div .signup_tooltip .top {
