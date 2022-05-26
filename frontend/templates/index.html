@@ -57,33 +57,35 @@
 						<td>
 							<div id="word_meaning"></div>
 						</td>
-						<td style="text-align: right">
+						<td style="text-align: right; padding-top: 20px; padding-bottom: 20px;">
+							<h6>معاني الكلمات</h6>
+							<br>
 							<input type="text" id="word_search">
-							<button type="submit" onclick="getMeaning()" class="btn btn-primary">معاني الكلمات</button>
+							<br>
+							<button type="submit" onclick="getMeaning()" class="btn btn-primary" style="margin: 5px !important;">ابحث</button>
 						</td>
 					</tr>
 					<tr>
 						<td>
 							<div id="poem_generator"></div>
 						</td>
-						<td style="text-align: right">
-							<button type="submit" onclick="" class="btn btn-primary">تأليف الشعر</button>
+						<td style="text-align: right; padding-top: 20px; padding-bottom: 20px;">
+							<h6>تأليف الشعر</h6>
+							<br>
+							<input type="text" id="model_word_search">
+							<br>
+							<button type="submit" onclick="" class="btn btn-primary" style="margin: 5px !important;">قم بالتأليف</button>
 						</td>
 					</tr>
 					<tr>
 						<td>
 							<div id="sentiment"></div>
 						</td>
-						<td style="text-align: right">
-							<button type="submit" onclick="getSentiment()" class="btn btn-primary">غزل أم هجاء</button>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<div id="annotation"></div>
-						</td>
-						<td style="text-align: right">
-							<button type="submit" onclick="" class="btn btn-primary">ملاحظة</button>
+						<td style="text-align: right; padding-top: 20px; padding-bottom: 20px;">
+							<h6>غزل أم هجاء</h6>
+							<span style="font-size: 14px; direction: rtl; font-family: AlmaraiRegular !important;">(حدد بيتاً من الشعر في الصفحة المجاورة لتحليل العاطفة)</span>
+							<br>
+							<button type="submit" onclick="getSentiment()" class="btn btn-primary" style="margin: 5px !important;">قم بالتحليل</button>
 						</td>
 					</tr>
 				</tbody>

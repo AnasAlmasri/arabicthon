@@ -47,6 +47,11 @@ h3 {
     font-family: AlmaraiRegular !important;
 }
 
+h6 {
+    direction: rtl;
+    font-family: AlmaraiRegular !important;
+}
+
 select {
     height: 100%;
     width: 105%;
