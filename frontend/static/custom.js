@@ -147,9 +147,15 @@ function getSentiment() {
 }
 
 function getPrediction() {
-    var poet = $("#model_poet").val();
+    var poet = "";
     var text = $("#model_word_search").val();
 
+    if ($("#model_poet").length) {
+        poet = $("#model_poet").val();
+    } else {
+        poet = $("#hidden_poet_name").val();
+
+    }
     $("#loader_div").show();
 
     $.ajax({
