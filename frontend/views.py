@@ -73,9 +73,9 @@ def ajax_get_sentiment(request):
             try:
                 pp = pred.tolist()[0]
                 if pp == 1:
-                    p = "محتوى إيجابي (غزل)"
+                    p = "محتوى إيجابي"
                 elif pp == 2:
-                    p = "محتوى سلبي (هجاء)"
+                    p = "محتوى سلبي"
             except:
                 pass
 
@@ -184,6 +184,9 @@ def index(request):
                     if i == 8:
                         break
 
+                if len(poet_list) == 0:
+                    raise Exception("لا توجد نتائج")
+
                 index_dict["poet_list"] = poet_list
 
                 index_dict["search_params"] = {"poet_name": poet_name}
@@ -223,6 +226,9 @@ def index(request):
                     i += 1
                     if i == 7:
                         break
+
+                if len(poem_rows) == 0:
+                    raise Exception("لا توجد نتائج")
 
                 index_dict["search_results"] = json.dumps(poem_rows)
 
