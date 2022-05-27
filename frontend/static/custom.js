@@ -123,7 +123,7 @@ function getMeaning() {
         url: "/get_meaning/",
         data: { "word": word },
         success: function (response) {
-            $("#word_meaning").html('<div class="alert info"><span style="text-align: right; font-size: 16px; direction: rtl; font-family: AlmaraiRegular !important;"><br><br>' + response["meaning"] + '</span></div>');
+            $("#word_meaning").html('<div class="alert info"><span style="float: right; font-size: 16px; direction: rtl; font-family: AlmaraiRegular !important;">' + response["meaning"] + '</span></div>');
         }
     });
 }
@@ -141,7 +141,7 @@ function getSentiment() {
         url: "/get_sentiment/",
         data: { "text": text },
         success: function (response) {
-            $("#sentiment").html('<div class="alert info"><span style="text-align: right; font-size: 16px; direction: rtl; font-family: AlmaraiRegular !important;"><br><br>' + response["pred"] + '</span></div>');
+            $("#sentiment").html('<div class="alert info"><span style="float: center; font-size: 16px; direction: rtl; font-family: AlmaraiRegular !important;">' + response["pred"] + '</span></div>');
         }
     });
 }
@@ -165,7 +165,7 @@ function getPrediction() {
         retryLimit: 3,
         data: { "poet": poet, "text": text },
         success: function (response) {
-            $("#poem_generator").html('<span style="text-align: right; font-size: 16px; direction: rtl; font-family: AlmaraiRegular !important;"><br><br>' + response["pred"] + '</span>');
+            $("#poem_generator").html('<div class="alert info"><span style="float: right; font-size: 16px; direction: rtl; font-family: AlmaraiRegular !important;">' + response["pred"] + '</span></div>');
             $("#loader_div").hide();
         },
         error: function (xhr, textStatus, errorThrown) {
