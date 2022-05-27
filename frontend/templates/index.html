@@ -243,7 +243,6 @@
 		var search_form = $('#search_form').height();
 		var get_poems_div = $('#get_poems_div').height();
 		var poet_details_div = $('#poet_details_div').height();
-
 		if ($('#poem_options').is(':hidden')) {
 			poem_options = 0;
 		}
@@ -256,20 +255,11 @@
 		if ($('#poet_details_div').is(':hidden')) {
 			poet_details_div = 0
 		}
-
 		var max_h = Math.max(poem_options, search_form, get_poems_div, poet_details_div)
-
-		console.log([poem_options, search_form, get_poems_div, poet_details_div])
-		console.log(max_h)
-		console.log($('#book-outermost').height())
-
 		var quart = max_h * .35;
 		if ($('#book-outermost').height() <= max_h+quart) {
 			$('#book-outermost').css('min-height', max_h+quart+'px')
 		}
-
-		console.log($('#book-outermost').height())
-
 	}
 
 	$(document).ready(function() {
