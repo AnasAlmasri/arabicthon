@@ -12,6 +12,7 @@ This project was created as part of an AI-oriented Arabic poetry hackathon organ
 - SQLite3
 - HTML/CSS
 - JavaScript/jQuery/AJAX
+- Python >= 3.8
 
 ## Core Dependencies
 ```
