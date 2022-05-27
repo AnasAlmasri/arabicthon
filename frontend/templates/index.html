@@ -66,7 +66,7 @@
 		<table id="options_table" class="table" style="width: 80%">
 			<tbody>
 				<tr>
-					<td>
+					<td style="vertical-align: middle; text-align: center;">
 						<div id="word_meaning"></div>
 					</td>
 					<td style="text-align: right;">
@@ -77,7 +77,7 @@
 					</td>
 				</tr>
 				<tr>
-					<td>
+					<td style="vertical-align: middle; text-align: center;">
 						<div id="poem_generator"></div>
 						<div id="loader_div" class="loader" style="display: none;"></div>
 					</td>
@@ -86,7 +86,7 @@
 						<input type="text" id="model_word_search">
 						<br>
 						{% if all_poet_dropdown %}
-							<select class="form-control select2" id="model_poet" style="width: 40%; min-width: 40%;">
+							<select class="form-control select2" id="model_poet" style="width: 60%; min-width: 40%;">
 								{% for p in all_poet_dropdown %}
 									<option value="{{ p.poet_name }}">{{ p.poet_name }}</option>
 								{% endfor %}
@@ -97,7 +97,7 @@
 					</td>
 				</tr>
 				<tr>
-					<td>
+					<td style="vertical-align: middle; text-align: center;">
 						<div id="sentiment"></div>
 					</td>
 					<td style="text-align: right;">
