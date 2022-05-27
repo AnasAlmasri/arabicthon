@@ -167,18 +167,22 @@
     <div id="bahr_div" class="form-group search-input-div">
       <label for="bahr_dd">البحر</label><br>
       <select id="bahr_dd" name="bahr_dd" class="js-example-basic-single">
-        <option value="الطويل">الطويل</option>
-        <option value="المنسرح">المنسرح</option>
-        <option value="المتقارب">المتقارب</option>
+		{% if bahr_list %}
+			{% for b in bahr_list %}
+				<option value="{{ b.name }}">{{ b.name }}</option>
+			{% endfor %}
+		{% endif %}
       </select>
     </div>
 
     <div id="age_div" class="form-group search-input-div">
       <label for="age_dd">العصر</label><br>
       <select id="age_dd" name="age_dd" class="js-example-basic-single">
-        <option value="قبل الإسلام">قبل الإسلام</option>
-        <option value="الأموي">الأموي</option>
-        <option value="الأيوبي">الأيوبي</option>
+		{% if age_list %}
+			{% for a in age_list %}
+				<option value="{{ a.name }}">{{ a.name }}</option>
+			{% endfor %}
+		{% endif %}
       </select>
     </div>
 

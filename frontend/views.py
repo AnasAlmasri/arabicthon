@@ -161,6 +161,34 @@ def index(request):
 
     index_dict["all_poet_dropdown"] = poet_list
 
+    # get distinct bahr for the bahr dropdown
+    conn = sqlite3.connect("db.sqlite3")
+    c = conn.cursor()
+    c.execute(f"SELECT distinct bahr FROM poem_dataset ORDER BY 1")
+    queryset = c.fetchall()
+    c.close()
+
+    bahr_list = []
+    for q in queryset:
+        if q[0]:
+            bahr_list.append({"name": q[0]})
+
+    index_dict["bahr_list"] = bahr_list
+
+    # get distinct age for the age dropdown
+    conn = sqlite3.connect("db.sqlite3")
+    c = conn.cursor()
+    c.execute(f"SELECT distinct age FROM poem_dataset ORDER BY 1")
+    queryset = c.fetchall()
+    c.close()
+
+    age_list = []
+    for q in queryset:
+        if q[0]:
+            age_list.append({"name": q[0]})
+
+    index_dict["age_list"] = age_list
+
     try:
 
         if request.method == "POST":
