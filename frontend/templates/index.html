@@ -146,7 +146,7 @@
 
 	<div id="poet_dd_div" class="form-group search-input-div">
 		<label for="poet_dd">اختر الشاعر</label><br>
-		<select id="poet_dd" name="poet_dd" class="js-example-basic-single">
+		<select class="form-control select2" id="poet_dd" name="poet_dd" style="width: 100%; min-width: 100%;">
 			{% if all_poet_dropdown %}
 				{% for p in all_poet_dropdown %}
 					<option value="{{ p.poet_name }}">{{ p.poet_name }}</option>
@@ -234,7 +234,6 @@
     }
     $('#bahr_dd').select2(dd_options);
     $('#age_dd').select2(dd_options);
-	$('#poet_dd').select2(dd_options);
 
     $('body').openAccessibility({
       // override the settings of the Accessibility Tools
@@ -262,7 +261,8 @@
 		$(this).addClass('highlight').siblings().removeClass('highlight');
 	});
 
-	$('#model_poet').select2();
+	$('#model_poet').select2({dir: 'rtl'});
+	$('#poet_dd').select2({dir: 'rtl'});
 
 	$('button.btn.btn-primary').wrap('<div class="button_div"></div>')
 
