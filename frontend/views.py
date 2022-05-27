@@ -148,6 +148,19 @@ def ajax_get_poems(request):
 def index(request):
     index_dict = {}
     msg = ""
+
+    conn = sqlite3.connect("db.sqlite3")
+    c = conn.cursor()
+    c.execute(f"SELECT DISTINCT poet FROM poem_dataset order by 1")
+    queryset = c.fetchall()
+    c.close()
+
+    poet_list = [{"poet_name": ""}]
+    for q in queryset:
+        poet_list.append({"poet_name": q[0]})
+
+    index_dict["all_poet_dropdown"] = poet_list
+
     try:
 
         if request.method == "POST":
@@ -158,11 +171,16 @@ def index(request):
 
                 # get search string
                 poet_name = request.POST.get("poet_name") or None
-                if poet_name is None:
+                poet_dd = request.POST.get("poet_dd") or None
+                if poet_name is None and poet_dd is None:
                     raise Exception("Poet name is mandatory")
 
+                needle = poet_name
+                if poet_dd:
+                    needle = poet_dd
+
                 # construct where clause
-                where_clause += f"poet LIKE '%{poet_name}%'"
+                where_clause += f"poet LIKE '%{needle}%'"
 
                 conn = sqlite3.connect("db.sqlite3")
                 c = conn.cursor()
@@ -176,10 +194,15 @@ def index(request):
                 poet_list = []
                 row = []
                 for q in queryset:
-                    row.append({"poet_name": q[0]})
-                    if len(row) == 4:
-                        poet_list.append(row)
-                        row = []
+                    if len(queryset) <= 4:
+                        if len(poet_list) == 0:
+                            poet_list.append([])
+                        poet_list[0].append({"poet_name": q[0]})
+                    else:
+                        row.append({"poet_name": q[0]})
+                        if len(row) == 4:
+                            poet_list.append(row)
+                            row = []
                     i += 1
                     if i == 8:
                         break
@@ -189,7 +212,7 @@ def index(request):
 
                 index_dict["poet_list"] = poet_list
 
-                index_dict["search_params"] = {"poet_name": poet_name}
+                index_dict["search_params"] = {"poet_name": needle}
 
             elif request.POST.get("radio_bayt"):
 
@@ -231,18 +254,6 @@ def index(request):
                     raise Exception("لا توجد نتائج")
 
                 index_dict["search_results"] = json.dumps(poem_rows)
-
-                conn = sqlite3.connect("db.sqlite3")
-                c = conn.cursor()
-                c.execute(f"SELECT DISTINCT poet FROM poem_dataset order by 1")
-                queryset = c.fetchall()
-                c.close()
-
-                poet_list = []
-                for q in queryset:
-                    poet_list.append({"poet_name": q[0]})
-
-                index_dict["all_poet_dropdown"] = poet_list
 
             else:
                 raise Exception("Unknown search mode. Contact IT")
