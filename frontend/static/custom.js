@@ -13,14 +13,14 @@ function renderSearchForm(mode) {
         case 'poet':
             $("#radio_poet").prop("checked", true);
             $("#radio_bayt").prop("checked", false);
-            showOrHideSearchFields('show', ['poet_name_div']);
+            showOrHideSearchFields('show', ['poet_name_div', 'poet_dd_div']);
             showOrHideSearchFields('hide', ['keyword_div', 'bahr_div', 'age_div']);
             break;
         case 'bayt':
             $("#radio_poet").prop("checked", false);
             $("#radio_bayt").prop("checked", true);
             showOrHideSearchFields('show', ['keyword_div', 'bahr_div', 'age_div']);
-            showOrHideSearchFields('hide', ['poet_name_div']);
+            showOrHideSearchFields('hide', ['poet_name_div', 'poet_dd_div']);
             break;
         default:
             renderSearchForm('bayt');
