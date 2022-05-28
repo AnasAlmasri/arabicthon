@@ -129,12 +129,22 @@
     <h3>البحث</h3>
     <br>
 
-    <div class="form-group">
-      <input type="radio" id="radio_bayt" name="radio_bayt" value="radio_bayt" onclick="renderSearchForm('bayt');">
-      <label for="radio_bayt">البحث عن بيت شعر</label>
-      &nbsp;&nbsp;&nbsp;&nbsp;
-      <input type="radio" id="radio_poet" name="radio_poet" value="radio_poet" onclick="renderSearchForm('poet');">
-      <label for="radio_poet">البحث عن شاعر</label>
+    <div id="radio_div" class="form-group">
+		<div id="radio_bayt_div" class="underline_radioBtn">
+			<div class="checkmark_container">
+				<input type="radio" id="radio_bayt" name="radio_bayt" value="radio_bayt" onclick="renderSearchForm('bayt');">
+				<span class="checkmark"></span>
+			</div>
+			<label for="radio_bayt">البحث عن بيت شعر</label>
+		</div>
+
+		<div id="radio_poet_div">
+			<div class="checkmark_container">
+				<input type="radio" id="radio_poet" name="radio_poet" value="radio_poet" onclick="renderSearchForm('poet');">
+				<span class="checkmark"></span>
+			</div>
+			<label for="radio_poet">البحث عن شاعر</label>
+		</div>
     </div>
 
 	<!-- search by poet -->
@@ -228,49 +238,89 @@
 
 <script>
 
-  $(document).ready(function() {
+	function setMainDivMinHeight() {
+		var poem_options = $('#poem_options').height();
+		var search_form = $('#search_form').height();
+		var get_poems_div = $('#get_poems_div').height();
+		var poet_details_div = $('#poet_details_div').height();
+		if ($('#poem_options').is(':hidden')) {
+			poem_options = 0;
+		}
+		if ($('#search_form').is(':hidden')) {
+			search_form = 0;
+		}
+		if ($('#get_poems_div').is(':hidden')) {
+			get_poems_div = 0
+		}
+		if ($('#poet_details_div').is(':hidden')) {
+			poet_details_div = 0
+		}
+		var max_h = Math.max(poem_options, search_form, get_poems_div, poet_details_div)
+		var quart = max_h * .35;
+		if ($('#book-outermost').height() <= max_h+quart) {
+			$('#book-outermost').css('min-height', max_h+quart+'px')
+		}
+	}
 
-    var dd_options = {
-      maximumSelectionLength: 5,
-      dropdownAutoWidth: true,
-      multiple: true,
-      dir: 'rtl'
-    }
-    $('#bahr_dd').select2(dd_options);
-    $('#age_dd').select2(dd_options);
+	$(document).ready(function() {
 
-    $('body').openAccessibility({
-      // override the settings of the Accessibility Tools
-      grayscale: 0,
-      brightness: 100,
-      contrast: 100,
-      maxZoomLevel: 3,
-      minZoomLevel: 0.5,
-      zoomStep: 0.2,
-      zoom: 0.8,
-      cursor: false,
-      invert: false,
+		var dd_options = {
+		maximumSelectionLength: 5,
+		dropdownAutoWidth: true,
+		multiple: true,
+		dir: 'rtl'
+		}
+		$('#bahr_dd').select2(dd_options);
+		$('#age_dd').select2(dd_options);
 
-      // text selector
-      textSelector: '.open-accessibility-text',
+		$('body').openAccessibility({
+		// override the settings of the Accessibility Tools
+		grayscale: 0,
+		brightness: 100,
+		contrast: 100,
+		maxZoomLevel: 3,
+		minZoomLevel: 0.5,
+		zoomStep: 0.2,
+		zoom: 0.8,
+		cursor: false,
+		invert: false,
 
-      // s(mall), m(edium), l(arge)
-      iconSize: 'm',
+		// text selector
+		textSelector: '.open-accessibility-text',
 
-      // local
-      localization: ['ar'],
-    });
+		// s(mall), m(edium), l(arge)
+		iconSize: 'm',
 
-	$('table[id^=poems_of_poet]').on('click', 'tbody tr', function(event) {
-		$(this).addClass('highlight').siblings().removeClass('highlight');
+		// local
+		localization: ['ar'],
+		});
+
+		$('table[id^=poems_of_poet]').on('click', 'tbody tr', function(event) {
+			$(this).addClass('highlight').siblings().removeClass('highlight');
+		});
+
+		$('#model_poet').select2({dir: 'rtl'});
+		$('#poet_dd').select2({dir: 'rtl'});
+
+		$('button.btn.btn-primary').wrap('<div class="button_div"></div>')
+
+		setMainDivMinHeight();
+
 	});
 
-	$('#model_poet').select2({dir: 'rtl'});
-	$('#poet_dd').select2({dir: 'rtl'});
+	$(document).on('change', function(){
+		setMainDivMinHeight();
+	})
 
-	$('button.btn.btn-primary').wrap('<div class="button_div"></div>')
-
-  });
+	$('#radio_div').on('click', function(){
+		if ($('#radio_bayt').is(':checked')) {
+			$('#radio_bayt_div').addClass('underline_radioBtn')
+			$('#radio_poet_div').removeClass('underline_radioBtn')
+		} else {
+			$('#radio_bayt_div').removeClass('underline_radioBtn')
+			$('#radio_poet_div').addClass('underline_radioBtn')
+		}
+	})
 
 </script>
 
