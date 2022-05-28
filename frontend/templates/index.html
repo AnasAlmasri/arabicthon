@@ -257,42 +257,40 @@
 		}
 		var max_h = Math.max(poem_options, search_form, get_poems_div, poet_details_div)
 		var quart = max_h * .35;
-		if ($('#book-outermost').height() <= max_h+quart) {
-			$('#book-outermost').css('min-height', max_h+quart+'px')
-		}
+		$('#book-outermost').css('min-height', max_h+quart+'px');
 	}
 
 	$(document).ready(function() {
 
 		var dd_options = {
-		maximumSelectionLength: 5,
-		dropdownAutoWidth: true,
-		multiple: true,
-		dir: 'rtl'
-		}
-		$('#bahr_dd').select2(dd_options);
-		$('#age_dd').select2(dd_options);
+			maximumSelectionLength: 5,
+			dropdownAutoWidth: true,
+			multiple: true,
+			dir: 'rtl'
+			}
+			$('#bahr_dd').select2(dd_options);
+			$('#age_dd').select2(dd_options);
 
-		$('body').openAccessibility({
-		// override the settings of the Accessibility Tools
-		grayscale: 0,
-		brightness: 100,
-		contrast: 100,
-		maxZoomLevel: 3,
-		minZoomLevel: 0.5,
-		zoomStep: 0.2,
-		zoom: 0.8,
-		cursor: false,
-		invert: false,
+			$('body').openAccessibility({
+			// override the settings of the Accessibility Tools
+			grayscale: 0,
+			brightness: 100,
+			contrast: 100,
+			maxZoomLevel: 3,
+			minZoomLevel: 0.5,
+			zoomStep: 0.1,
+			zoom: 0.8,
+			cursor: false,
+			invert: false,
 
-		// text selector
-		textSelector: '.open-accessibility-text',
+			// text selector
+			textSelector: '.open-accessibility-text',
 
-		// s(mall), m(edium), l(arge)
-		iconSize: 'm',
+			// s(mall), m(edium), l(arge)
+			iconSize: 'm',
 
-		// local
-		localization: ['ar'],
+			// local
+			localization: ['ar'],
 		});
 
 		$('table[id^=poems_of_poet]').on('click', 'tbody tr', function(event) {
@@ -302,14 +300,16 @@
 		$('#model_poet').select2({dir: 'rtl'});
 		$('#poet_dd').select2({dir: 'rtl'});
 
-		$('button.btn.btn-primary').wrap('<div class="button_div"></div>')
+		$('button.btn.btn-primary').wrap('<div class="button_div"></div>');
 
 		setMainDivMinHeight();
 
 	});
 
-	$(document).on('change', function(){
-		setMainDivMinHeight();
+	$(document).click(function() {
+		setTimeout(function() {
+			setMainDivMinHeight();
+		}, 1000);
 	})
 
 	$('#radio_div').on('click', function(){
