@@ -11,8 +11,7 @@
 #poem_options .button_div {
     width: 100%;
     text-align: right;
-    margin-top: 2vh;
-    margin-bottom: 0vh;
+    margin: 2.5vh auto;
 }
 
 #poem_options .button_div button {
@@ -21,12 +20,12 @@
 }
 
 #poem_options tr td h6 {
-    font-weight: 600;
-    margin-top: 1vh;
+    font-size: 1.25rem;
+    margin-top: 3vh;
 }
 
 .button_div button {
-    margin-top: 2vh;
+    margin-top: 5vh;
     text-align: center;
     top: 50%;
     padding: 1% 15%;
@@ -47,7 +46,8 @@
     margin-top: 2.5%;
 }
 
-#search_form input, #poem_options input {
+#search_form input,
+#poem_options input {
     background-color: transparent;
     border: none;
     border-bottom: #000000 solid 2px;
@@ -62,10 +62,87 @@
     text-align: right;
 }
 
-#search_form input:focus, #poem_options input:focus {
+#search_form input:focus,
+#poem_options input:focus,
+#search_form input:hover,
+#poem_options input:hover {
     transition: 0.3s ease-in;
     border: none;
     border-radius: 50px;
     border-bottom: #36374D solid 2px;
     background-color: #f0f0f0 !important;
 }
+
+#model_word_search {
+    margin-bottom: 2rem;
+}
+
+#poems_of_poet td {
+    padding: 1rem 0.5rem;
+}
+
+#bahr_div label,
+#age_div label,
+#poet_dd_div label {
+    margin-bottom: 1rem;
+}
+
+#search_form h3 {
+    text-align: center;
+    font-size: 3rem;
+    color: #36374D;
+}
+
+#search_form label {
+    font-size: 1.25rem;
+}
+
+#radio_div {
+    margin: 2rem 3vw;
+}
+
+#radio_div label {
+    font-size: 1.5rem;
+    margin-right: 10px;
+    color: #2125296f;
+}
+
+#radio_div label:hover {
+    color: #212529;
+}
+
+.underline_radioBtn {
+    border-bottom: #36374D solid 2px;
+    padding-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+.underline_radioBtn label {
+    color: #212529 !important;
+}
+
+#radio_div div {
+    display: inline-block;
+}
+
+#radio_poet_div {
+    float: left;
+}
+
+#search_form .select2-container .select2-selection--single {
+    height: 6vh !important;
+}
+
+#search_form .select2-container--default[dir="rtl"] .select2-selection--single .select2-selection__arrow {
+    left: 10px !important;
+    top: 10px !important;
+}
+
+#search_form .select2-container[dir="rtl"] .select2-selection--single .select2-selection__rendered {
+    padding: 2% 3% !important;
+}
+
+.select2-search--dropdown .select2-search__field {
+    width: 98% !important;
+}
+
